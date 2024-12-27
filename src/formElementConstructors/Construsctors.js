@@ -1,3 +1,8 @@
+export class Separator {
+  constructor() {
+    this.type = "separator";
+  }
+}
 export class Input {
   constructor() {
     this.name = "";

@@ -16,33 +16,49 @@
         ></TypeOptionsComponent>
       </div>
       <div class="separator"></div>
-      <div class="flex-re">
+      <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
-          <q-btn push color="DAA520" square @click="updateElement(true)">
+          <q-btn unelevated color="DAA520" @click="updateElement(true)">
             <q-icon name="add"></q-icon>
           </q-btn>
-          <q-btn push color="DAA520" square @click="updateElement(false)" :disable="formSettings.length <= 1">
+          <q-btn unelevated color="DAA520" @click="updateElement(false)" :disable="formSettings.length <= 1">
             <q-icon name="remove"></q-icon>
           </q-btn>
         </div>
       </div>
+      <div class="flex">
+        <q-btn unelevated color="primary" class="col" @click="dialog.JSONStringResult.isShow = true">
+          <q-icon name="send"></q-icon>
+        </q-btn>
+      </div>
     </div>
   </div>
+  <Popup_JSONString :dialog="dialog" :formSettings="formSettings"/>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import {
+  Separator,
   Input,
   Input_password,
   Input_date,
 } from 'src/formElementConstructors/Construsctors.js'
+
+import Popup_JSONString from 'components/Popup_JSONString.vue'
+
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
 
 defineOptions({
   name: 'ConstructorComponent'
 });
+const dialog = ref({
+  JSONStringResult: {
+    isShow: false
+  }
+})
 const constructorList = ref([
+  { label: 'separator', value: 'separator' },
   { label: 'input', value: 'input' },
   { label: 'input(密碼型)', value: 'input_password' },
   { label: 'input(日期)', value: 'input_date' },
@@ -52,6 +68,7 @@ const formSettings = ref([
   {}
 ])
 const classMapping = {
+  separator: Separator,
   input: Input,
   input_password: Input_password,
   input_date: Input_date
