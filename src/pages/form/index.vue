@@ -1,6 +1,11 @@
 <template>
   <div class="q-pa-md container">
-    <div class="q-mb-sm">編譯器(compiler)元件</div>
+    <!-- <div class="q-mb-sm"></div> -->
+    <div class="flex-jc q-mb-sm">
+      <q-chip outline square size="18px" icon="preview" color="grey-9">
+        編譯器(compiler)元件
+      </q-chip>
+    </div>
     <template v-for="(renderObj, index) in formSettings.render" :key="index">
       <div class="row items-center">
         <div class="col">

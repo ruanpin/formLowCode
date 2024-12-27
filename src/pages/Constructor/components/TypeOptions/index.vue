@@ -1,7 +1,10 @@
 <template>
+  <q-chip outline square size="md" color="primary" text-color="white" icon="radio_button_checked" class="q-ma-none q-my-sm">
+    選擇表單元素
+  </q-chip>
   <q-select
     dense
-    borderless
+    outlined
     :options="constructorList"
     v-model="formObj.type"
     emit-value
@@ -26,7 +29,28 @@
     </template>
   </q-select>
   <div>
-    <component :is="ComponentsMapping[formObj.type]"></component>
+    <q-chip
+      v-show="formObj.type"
+      outline
+      square
+      size="md"
+      color="deep-orange"
+      text-color="white"
+      icon="format_list_bulleted  "
+      class="q-ma-none q-mt-md q-mb-xs"
+    >
+      元素客製化
+    </q-chip>
+    <component
+      :is="ComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    >
+      <!-- slot:擴充選項 -->
+      <component
+        :is="ExtendsComponentsMapping[formObj.type]"
+        :formObj="formObj"
+      />
+    </component>
   </div>
 </template>
 
@@ -34,7 +58,13 @@
 import { defineAsyncComponent } from 'vue'
 const ComponentsMapping = {
   input: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
+  input_password: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
+  input_date: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue'))
+}
+const ExtendsComponentsMapping = {
+  input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
+  input_date: defineAsyncComponent(()=> import('./components/InputExtends/Date/index.vue')),
 }
 defineOptions({
   name: 'TypeOptionsComponent'
@@ -42,7 +72,7 @@ defineOptions({
 const props = defineProps({
   constructorList: Object,
   formObj: Object,
-  formIndex: String
+  formIndex: Number
 })
 const emit = defineEmits(['update:formObj'])
 </script>

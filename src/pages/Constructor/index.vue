@@ -1,8 +1,13 @@
 <template>
   <div class="container q-pa-md q-mr-xl height">
-    <div class="">表單JSON String產生器</div>
+    <div class="flex-jc">
+      <q-chip outline square size="18px" icon="integration_instructions" color="grey-9">
+        表單JSON String產生器
+      </q-chip>
+    </div>
     <div class="">
-      <div class="" v-for="(formObj, index) in formSettings" :key="index">
+      <div class="q-mb-md" v-for="(formObj, index) in formSettings" :key="index">
+        <div class="syncShowObject">{{ formObj }}</div>
         <TypeOptionsComponent
           :constructorList="constructorList"
           :formObj="formObj"
@@ -28,7 +33,9 @@
 <script setup>
 import { ref } from 'vue'
 import {
-  Input
+  Input,
+  Input_password,
+  Input_date,
 } from 'src/formElementConstructors/Construsctors.js'
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
 
@@ -37,18 +44,26 @@ defineOptions({
 });
 const constructorList = ref([
   { label: 'input', value: 'input' },
+  { label: 'input(密碼型)', value: 'input_password' },
+  { label: 'input(日期)', value: 'input_date' },
   { label: 'select', value: 'select' },
 ])
 const formSettings = ref([
   {}
 ])
 const classMapping = {
-  input: Input
+  input: Input,
+  input_password: Input_password,
+  input_date: Input_date
 }
 function updateFormObj ({ formIndex, value }) {
-  if (!classMapping.hasOwnProperty(value))
-    throw new Error('there is no such class you chose in mapping object, please check again.')
-  formSettings.value[formIndex] = new classMapping[value]({})
+  try {
+    if (!classMapping.hasOwnProperty(value))
+      throw new Error('there is no such class you chose in mapping object, please check again.')
+    formSettings.value[formIndex] = new classMapping[value]({})
+  } catch {
+    formSettings.value[formIndex] = Object.assign({}, { type: value })
+  }
 }
 function updateElement (operate) {
   if (operate) {
@@ -64,7 +79,7 @@ function updateElement (operate) {
     background-color: #decb99 ;
     border-radius: 24px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
-    min-width: 500px;
+    width: 500px;
     .height {
       min-height: 570px;
     }
@@ -73,6 +88,13 @@ function updateElement (operate) {
       height: 1px;
       width: 100%;
       background-color: #aba3a3;
+    }
+    .main-title {
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .syncShowObject {
+      word-wrap: break-word
     }
   }
 </style>

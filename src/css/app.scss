@@ -1,5 +1,7 @@
 // app global css in SCSS form
-
+body {
+  font-family: 'Outfit', sans-serif;
+}
 .flex {
   display: flex;
 }
@@ -20,7 +22,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
-
+// ---------------------------------
 .f700 {
   font-weight: 700;
 }
@@ -33,7 +35,7 @@
 .f400 {
   font-weight: 400;
 }
-
+// ---------------------------------
 .fz8 {
   font-size: 8px;
 }
@@ -163,7 +165,7 @@
 .fz50 {
   font-size: 50px;
 }
-
+// -------------------------------------
 .text-AF3D3D {
   color: #AF3D3D !important;
 }
@@ -184,4 +186,10 @@
 }
 .text-DAA520 {
   color: #DAA520 !important;
+}
+// --------------------------------------------
+.options-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
 }

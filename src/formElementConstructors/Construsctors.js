@@ -1,10 +1,31 @@
 export class Input {
-  constructor({ name, field, color, required }) {
-    this.name = name;
-    this.type = "input"
-    this.field = field;
-    this.color = color;
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.type = "input";
+    this.field = "";
     this.value = "";
-    this.required = required;
+    this.required = false;
+  }
+}
+export class Input_password {
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.type = "input_password";
+    this.field = "";
+    this.value = "";
+    this.required = false;
+    this.limitWordAmount = ""
+  }
+}
+export class Input_date {
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.type = "input_date";
+    this.field = "";
+    this.value = "";
+    this.required = false;
   }
 }
