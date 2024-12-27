@@ -34,11 +34,11 @@ module.exports = {
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
     'vue',
-    
+
     // https://github.com/typescript-eslint/typescript-eslint/issues/389#issuecomment-509292674
     // Prettier has not been included as plugin to avoid performance impact
     // add it as an extension for your IDE
-    
+
   ],
 
   globals: {
@@ -56,10 +56,34 @@ module.exports = {
 
   // add your custom rules here
   rules: {
-    
-    'prefer-promise-reject-errors': 'off',
+    "no-new-func": "off",
+    // allow async-await
+    "generator-star-spacing": "off",
+    // allow paren-less arrow functions
+    "arrow-parens": "off",
+    "one-var": "off",
+    "no-void": "off",
+    "multiline-ternary": "off",
+    // 取消駝峰
+    camelcase: "off",
+    // 取消嚴格比對
+    eqeqeq: "off",
+    // 取消結尾分號
+    semi: 0,
+    curly: "off",
+    //取消單引號限制
+    quotes: "off",
+    semi: "off",
+    "comma-dangle": "off",
+    //取消空格限制
+    "space-before-function-paren": 0,
+    "vue/no-mutating-props": ["error", {
+      "shallowOnly": true
+    }],
+    "prefer-promise-reject-errors": "off",
 
     // allow debugger during development only
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    indent: "off",
   }
 }
