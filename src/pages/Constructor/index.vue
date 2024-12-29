@@ -6,22 +6,23 @@
       </q-chip>
     </div>
     <div class="">
-      <div class="q-mb-md" v-for="(formObj, index) in formSettings" :key="index">
-        <div class="syncShowObject">{{ formObj }}</div>
+      <div class="q-mb-md" v-for="(formObj, index) in formSettings.render" :key="index">
+        <q-avatar font-size="14px" size="sm" color="blue-9" text-color="white">{{ index + 1 }}</q-avatar>
+        <div class="syncShowObject">current object: {{ formObj }}</div>
         <TypeOptionsComponent
           :constructorList="constructorList"
           :formObj="formObj"
           :formIndex="index"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
+        <div class="separator"></div>
       </div>
-      <div class="separator"></div>
       <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
           <q-btn unelevated color="DAA520" @click="updateElement(true)">
             <q-icon name="add"></q-icon>
           </q-btn>
-          <q-btn unelevated color="DAA520" @click="updateElement(false)" :disable="formSettings.length <= 1">
+          <q-btn unelevated color="DAA520" @click="updateElement(false)" :disable="formSettings.render.length <= 1">
             <q-icon name="remove"></q-icon>
           </q-btn>
         </div>
@@ -64,9 +65,12 @@ const constructorList = ref([
   { label: 'input(日期)', value: 'input_date' },
   { label: 'select', value: 'select' },
 ])
-const formSettings = ref([
-  {}
-])
+const formSettings = ref({
+  render: [{}],
+  submit_APISettings: {
+
+  }
+})
 const classMapping = {
   separator: Separator,
   input: Input,
@@ -77,16 +81,16 @@ function updateFormObj ({ formIndex, value }) {
   try {
     if (!classMapping.hasOwnProperty(value))
       throw new Error('there is no such class you chose in mapping object, please check again.')
-    formSettings.value[formIndex] = new classMapping[value]({})
+    formSettings.value.render[formIndex] = new classMapping[value]({})
   } catch {
-    formSettings.value[formIndex] = Object.assign({}, { type: value })
+    formSettings.value.render[formIndex] = Object.assign({}, { type: value })
   }
 }
 function updateElement (operate) {
   if (operate) {
-    formSettings.value.push({})
-  } else if (!operate && formSettings.value.length > 1) {
-    formSettings.value.pop()
+    formSettings.value.render.push({})
+  } else if (!operate && formSettings.value.render.length > 1) {
+    formSettings.value.render.pop()
   }
 }
 </script>

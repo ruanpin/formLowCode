@@ -1,6 +1,5 @@
 <template>
   <div class="q-pa-md container">
-    <!-- <div class="q-mb-sm"></div> -->
     <div class="flex-jc q-mb-sm">
       <q-chip outline square size="18px" icon="preview" color="grey-9">
         編譯器(compiler)元件
@@ -33,7 +32,8 @@
 </template>
 
 <script setup>
-import { ref, defineAsyncComponent } from 'vue'
+import { ref, defineAsyncComponent, watch } from 'vue'
+import { useJSONSharingStore } from 'stores/JSONSharing.js'
 
 defineOptions({
   name: 'FormComponent'
@@ -52,7 +52,8 @@ const componentsRenderingMap = {
   checkbox: defineAsyncComponent(()=> import('./components/Checkbox/index.vue')),
 }
 
-// 每個type定義一個專屬的class，要用時再new一個出來（備注：待實作）
+const store = useJSONSharingStore()
+
 const formSettings = ref({
   render: [
     {
@@ -254,13 +255,17 @@ const formSettings = ref({
       required: false,
     },
   ],
-  APISettings: {
+  submit_APISettings: {
     method: "POST",
     url_first: "AJAX_test",
     url_second: "News45",
     askUser: false,
     PayloadTypes: "form",
   }
+})
+
+watch(() => store.JSON_form, (newValue) => {
+  formSettings.value = newValue
 })
 </script>
 

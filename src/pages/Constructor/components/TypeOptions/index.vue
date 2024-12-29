@@ -39,7 +39,7 @@
       icon="format_list_bulleted  "
       class="q-ma-none q-mt-md q-mb-xs"
     >
-      元素客製化
+      表單元素設定
     </q-chip>
     <component
       :is="ComponentsMapping[formObj.type]"
