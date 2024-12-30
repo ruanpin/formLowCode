@@ -45,7 +45,8 @@ defineOptions({
 const componentsRenderingMap = {
   separator: defineAsyncComponent(()=> import('./components/Separator/index.vue')),
   input: defineAsyncComponent(()=> import('./components/Input/index.vue')),
-  date: defineAsyncComponent(()=> import('./components/Date/index.vue')),
+  input_password: defineAsyncComponent(()=> import('./components/InputPassword/index.vue')),
+  input_date: defineAsyncComponent(()=> import('./components/InputDate/index.vue')),
   radio: defineAsyncComponent(()=> import('./components/Radio/index.vue')),
   toggle: defineAsyncComponent(()=> import('./components/Toggle/index.vue')),
   textarea: defineAsyncComponent(()=> import('./components/Textarea/index.vue')),
@@ -66,9 +67,6 @@ const loading = ref({
 const formSettings = ref({
   render: [
     {
-      type: "separator",
-    },
-    {
       name: "姓名",
       type: "input",
       label: "姓名",
@@ -79,7 +77,7 @@ const formSettings = ref({
     },
     {
       name: "生效日期",
-      type: "date",
+      type: "input_date",
       label: "生效日期",
       field: "fIssueDate",
       value: "",
@@ -263,6 +261,9 @@ const formSettings = ref({
       ],
       required: false,
     },
+    {
+      type: "separator",
+    },
   ],
   submit_APISettings: {
     method: "POST",
@@ -287,10 +288,14 @@ function submitForm (APISettings) {
   } = APISettings
 
   const result = mainExtract.main(formSettings.value.render)
-  if (result.incompleteRequiredFieldsContainer.length) {
+  if (result.incompleteRequiredFieldsContainer.length || result.validContainer.length) {
     for (const key in result.incompleteRequiredFieldsContainer) {
       const obj = result.incompleteRequiredFieldsContainer[key]
-      alert.rulewarning(`${obj.label}為必填`)
+      alert.rulewarning(`「${obj.label}」 is required.`)
+    }
+    for (const key in result.validContainer) {
+      const obj = result.validContainer[key]
+      alert.warning(`${obj.msg}`)
     }
     return
   }
@@ -307,9 +312,6 @@ function submitForm (APISettings) {
       loading.value.submit = false
     })
 }
-function checkAllRequiredFields () {
-
-}
 </script>
 
 <style lang="scss" scoped>
@@ -317,5 +319,6 @@ function checkAllRequiredFields () {
     background-color: #d9dbb1 ;
     border-radius: 24px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
+    min-width: 450px;
   }
 </style>

@@ -100,4 +100,15 @@ export const alert = {
       position: "bottom-left",
     });
   },
+  warning: (content, icon = "warning") => {
+    noticeVue.create({
+      progress: true,
+      message: content,
+      icon,
+      color: "red",
+      textColor: "white",
+      timeout: 3000,
+      position: "bottom-left",
+    });
+  },
 };

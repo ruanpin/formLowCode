@@ -1,7 +1,7 @@
 <template>
-  <div class="flex-ac q-pa-sm">
+  <div class="q-py-sm">
     ToggleComponent
-    <div class="f700 q-mr-md fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
+    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
     <q-toggle
       v-model="renderObject.value"
       :label="renderObject.value"

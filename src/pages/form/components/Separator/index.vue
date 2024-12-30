@@ -1,6 +1,6 @@
 <template>
   <div>
-    -----SeparatorComponent-----
+    <div class="sep"></div>
   </div>
 </template>
 
@@ -17,5 +17,9 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-
+  .sep {
+    height: 2px;
+    width: 100%;
+    background-color: #9F9F9F;
+  }
 </style>

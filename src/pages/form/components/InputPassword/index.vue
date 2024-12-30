@@ -6,20 +6,23 @@
       class="col"
       dense
       outlined
-      :placeholder="renderObject.placeholder"
-      v-model="renderObject.value"
       stack-label
+      v-model="renderObject.value"
+      :type="isPwd ? 'password' : 'text'"
     >
       <template v-slot:append>
-        <q-btn dense round size="sm" unelevated>
-          <q-icon class="cursor-pointer" name="close" size="xs" @click="renderObject.value = ''"></q-icon>
-        </q-btn>
+        <q-icon
+          :name="isPwd ? 'visibility_off' : 'visibility'"
+          class="cursor-pointer"
+          @click="isPwd = !isPwd"
+        />
       </template>
     </q-input>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 defineOptions({
   name: 'InputComponent'
 })
@@ -29,6 +32,7 @@ defineProps({
     required: true
   }
 })
+const isPwd = ref(true)
 </script>
 
 <style lang="scss" scoped>

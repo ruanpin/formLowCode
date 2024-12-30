@@ -1,7 +1,6 @@
 <template>
-  <div class="flex-ac q-pa-sm">
-    DateComponent
-    <div class="f700 q-mr-md fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
+  <div class="q-py-sm">
+    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <q-input
       class="col"
       outlined

@@ -45,14 +45,18 @@
 //   return result
 // }
 const getValueFunctionMapping = {
-  input: getInputValue,
+  input: getInput,
+  input_password: getInput,
+  input_date: getInput,
 }
-function getInputValue (eachObj, container) {
+function getInput (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
 }
 
 const checkRequiredFieldsMapping = {
   input: checkInput,
+  input_password: checkInput,
+  input_date: checkInput,
 }
 function checkInput (eachObj, container) {
   if (eachObj.required && !eachObj.value) {
@@ -62,19 +66,42 @@ function checkInput (eachObj, container) {
   }
 }
 
+const formatValidMapping = {
+  input_date: checkDate,
+}
+const regexDate = /^\d{4}\/\d{2}\/\d{2}$/;
+function checkDate (eachObj, container) {
+  const parsedDate = new Date(eachObj.value)
+  // console.log(parsedDate, 'parsedDate', isNaN(parsedDate.getTime()));
+  if (!eachObj.value) return
+  if (isNaN(parsedDate.getTime()) || !regexDate.test(eachObj.value)) {
+    container.push({
+      label: eachObj.label,
+      msg: `「${eachObj.label}」 日期格式錯誤，請重新確認`
+    })
+  }
+}
+
 export const mainExtract = {
   main: (renderObj) => {
     if (!Array.isArray(renderObj)) return
     const valueContainer = {}
     const incompleteRequiredFieldsContainer = []
+    const validContainer = []
 
     for (const key in renderObj) {
       const eachObj = renderObj[key]
       getValueFunctionMapping[eachObj.type]?.(eachObj, valueContainer)
       checkRequiredFieldsMapping[eachObj.type]?.(eachObj, incompleteRequiredFieldsContainer)
+      formatValidMapping[eachObj.type]?.(eachObj, validContainer)
     }
-    console.log(valueContainer, 'valueContainer');
-    console.log(incompleteRequiredFieldsContainer, 'incompleteRequiredFieldsContainer');
-    return { valueContainer, incompleteRequiredFieldsContainer }
+    // console.log(valueContainer, 'valueContainer');
+    // console.log(incompleteRequiredFieldsContainer, 'incompleteRequiredFieldsContainer');
+    // console.log(validContainer, 'validContainer');
+    return {
+      valueContainer,
+      incompleteRequiredFieldsContainer,
+      validContainer
+    }
   }
 }
