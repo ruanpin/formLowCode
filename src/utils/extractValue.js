@@ -47,20 +47,34 @@
 const getValueFunctionMapping = {
   input: getInputValue,
 }
-function getInputValue ({ eachObj, container }) {
+function getInputValue (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
+}
+
+const checkRequiredFieldsMapping = {
+  input: checkInput,
+}
+function checkInput (eachObj, container) {
+  if (eachObj.required && !eachObj.value) {
+    container.push({
+      label: eachObj.label
+    })
+  }
 }
 
 export const mainExtract = {
   main: (renderObj) => {
     if (!Array.isArray(renderObj)) return
-    const container = {}
+    const valueContainer = {}
+    const incompleteRequiredFieldsContainer = []
 
     for (const key in renderObj) {
       const eachObj = renderObj[key]
-      getValueFunctionMapping[eachObj.type]?.({ eachObj, container })
+      getValueFunctionMapping[eachObj.type]?.(eachObj, valueContainer)
+      checkRequiredFieldsMapping[eachObj.type]?.(eachObj, incompleteRequiredFieldsContainer)
     }
-    console.log(container, 'getValueResult');
-    return container
+    console.log(valueContainer, 'valueContainer');
+    console.log(incompleteRequiredFieldsContainer, 'incompleteRequiredFieldsContainer');
+    return { valueContainer, incompleteRequiredFieldsContainer }
   }
 }

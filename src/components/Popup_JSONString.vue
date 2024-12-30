@@ -12,7 +12,7 @@
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn unelevated color="primary" @click="clickToCopy">
+        <q-btn unelevated color="primary" @click="clickToCopy" :disable="disable.copy">
           <q-icon name="content_copy" class="q-mr-xs"></q-icon>copy
         </q-btn>
         <q-btn unelevated color="light-green-7" @click="sentToCompiler" :loading="loading.sendToCompiler">
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { useQuasar } from 'quasar'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
 defineOptions({
@@ -42,23 +42,19 @@ const props = defineProps({
 })
 const store = useJSONSharingStore()
 const $q = useQuasar()
+const alert = inject('alert')
 const loading = ref({
-  sendToCompiler: false
+  sendToCompiler: false,
+})
+const disable = ref({
+  copy: false
 })
 
 function sentToCompiler () {
   loading.value.sendToCompiler = true
   store.setTarget(JSON.parse(JSON.stringify(props.formSettings)))
     .then(res => {
-      $q.notify({
-        progress: true,
-        message: '傳送成功',
-        icon: 'check_circle',
-        color: "light-green-7",
-        textColor: "white",
-        timeout: 500,
-        position: "center",
-      });
+      alert.success("傳送成功")
       setTimeout(() => {
         props.dialog.JSONStringResult.isShow = false
       }, 50)
@@ -73,21 +69,18 @@ function sentToCompiler () {
 
 function clickToCopy () {
   const text = JSON.stringify(props.formSettings)
-
+  disable.value.copy = true
   navigator.clipboard.writeText(text)
     .then(res => {
-      $q.notify({
-        progress: true,
-        message: '複製成功',
-        icon: 'check_circle',
-        color: "light-green-7",
-        textColor: "white",
-        timeout: 500,
-        position: "center",
-      });
+      alert.success("複製成功")
     })
     .catch(err => {
 
+    })
+    .finally(()=> {
+      setTimeout(() => {
+        disable.value.copy = false
+      }, 1000)
     })
 }
 

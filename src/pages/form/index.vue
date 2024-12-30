@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, defineAsyncComponent, watch } from 'vue'
+import { ref, defineAsyncComponent, watch, inject } from 'vue'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
 import { useHttpRequestStore } from 'stores/HttpRequest.js'
 import { mainExtract } from 'src/utils/extractValue.js'
@@ -56,6 +56,7 @@ const componentsRenderingMap = {
   checkbox: defineAsyncComponent(()=> import('./components/Checkbox/index.vue')),
 }
 
+const alert = inject('alert')
 const storeJSONSharing = useJSONSharingStore()
 const storeHttpRequest = useHttpRequestStore()
 const loading = ref({
@@ -285,10 +286,17 @@ function submitForm (APISettings) {
     PayloadTypes
   } = APISettings
 
-  const data = mainExtract.main(formSettings.value.render)
+  const result = mainExtract.main(formSettings.value.render)
+  if (result.incompleteRequiredFieldsContainer.length) {
+    for (const key in result.incompleteRequiredFieldsContainer) {
+      const obj = result.incompleteRequiredFieldsContainer[key]
+      alert.rulewarning(`${obj.label}為必填`)
+    }
+    return
+  }
 
   loading.value.submit = true
-  storeHttpRequest[`request_${method}`]({ url_first, url_second, PayloadTypes, data })
+  storeHttpRequest[`request_${method}`]({ url_first, url_second, PayloadTypes, data: result.valueContainer })
     .then(res => {
       console.log('進入then', res);
     })
@@ -298,6 +306,9 @@ function submitForm (APISettings) {
     .finally(() => {
       loading.value.submit = false
     })
+}
+function checkAllRequiredFields () {
+
 }
 </script>
 
