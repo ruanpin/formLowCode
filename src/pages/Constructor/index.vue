@@ -68,7 +68,11 @@ const constructorList = ref([
 const formSettings = ref({
   render: [{}],
   submit_APISettings: {
-
+    method: "POST",
+    url_first: "firstUrl_test",
+    url_second: "secondUrl_test",
+    askUser: false,
+    PayloadTypes: "form",
   }
 })
 const classMapping = {

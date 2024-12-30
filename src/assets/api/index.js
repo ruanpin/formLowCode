@@ -1,9 +1,11 @@
 import axios from "axios";
 import { Service } from "axios-middleware";
 import { appsetting } from "../appsetting";
+import { useLoginStatusStore } from 'stores/LoginStatus.js'
 
 let isInit = false;
-const token = "loginStatus/get_token"; // JWT_token 的Store getter位置
+// const token = "loginStatus/get_token"; Vuex版
+const storeLoginStatus = useLoginStatusStore() // pinia版 241229
 
 let app = null;
 export function setApp(app_instance) {
@@ -29,14 +31,14 @@ function AXIOS() {
       onResponse(response) {
         // 回應攔截
         const data = JSON.parse(response.data);
-        if (data.code != 200) {
-          // console.log("錯誤");
-          app.config.globalProperties.$alert.warning(
-            data.code + " " + data.message
-          );
-          return;
-        }
-        console.log("onResponse", data);
+        // if (data.code != 200) {
+        //   // console.log("錯誤");
+        //   app.config.globalProperties.$alert.warning(
+        //     data.code + " " + data.message
+        //   );
+        //   return;
+        // }
+        // console.log("onResponse", data);
         // app.config.globalProperties.$alert.success(data.code + " " + data.message);
         return data;
       },
@@ -59,10 +61,9 @@ export const request = {
   // single
   addAuth: (ct) => {
     const copy = request.getBaseURL(ct);
-    // 原為 copy.headers = { Authorization: `Bearer ${store.getters[token]}` };
-    // 改為 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` }; 230912
+    // Vuex版 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` };
     copy.headers = {
-      Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}`,
+      Authorization: `Bearer ${storeLoginStatus.get_token}`,
     };
     return AXIOS().create(copy);
   },
@@ -80,9 +81,8 @@ export const request = {
   addJSONAuth: (ct) => {
     const copy = request.getBaseURL(ct);
     copy.headers = {
-      // 原為 copy.headers = { Authorization: `Bearer ${store.getters[token]}` };
-      // 改為 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` }; 230912
-      Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}`,
+      // Vuex版 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` };
+      Authorization: `Bearer ${storeLoginStatus.get_token}`,
       "Content-Type": "application/json",
     };
     return AXIOS().create(copy);
@@ -90,9 +90,8 @@ export const request = {
   addFORMAuth: (ct) => {
     const copy = request.getBaseURL(ct);
     copy.headers = {
-      // 原為 copy.headers = { Authorization: `Bearer ${store.getters[token]}` };
-      // 改為 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` }; 230912
-      Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}`,
+      // Vuex版 copy.headers = { Authorization: `Bearer ${app.config.globalProperties.$store.getters[token]}` };
+      Authorization: `Bearer ${storeLoginStatus.get_token}`,
       "Content-Type": "multipart/form-data",
     };
     return AXIOS().create(copy);

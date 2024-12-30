@@ -24,6 +24,8 @@
           color: white
         "
         size="md"
+        :loading="loading.submit"
+        @click="submitForm(formSettings.submit_APISettings)"
       >
         submit
       </q-btn>
@@ -34,6 +36,8 @@
 <script setup>
 import { ref, defineAsyncComponent, watch } from 'vue'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
+import { useHttpRequestStore } from 'stores/HttpRequest.js'
+import { mainExtract } from 'src/utils/extractValue.js'
 
 defineOptions({
   name: 'FormComponent'
@@ -52,7 +56,11 @@ const componentsRenderingMap = {
   checkbox: defineAsyncComponent(()=> import('./components/Checkbox/index.vue')),
 }
 
-const store = useJSONSharingStore()
+const storeJSONSharing = useJSONSharingStore()
+const storeHttpRequest = useHttpRequestStore()
+const loading = ref({
+  submit: false
+})
 
 const formSettings = ref({
   render: [
@@ -257,16 +265,40 @@ const formSettings = ref({
   ],
   submit_APISettings: {
     method: "POST",
-    url_first: "AJAX_test",
-    url_second: "News45",
+    url_first: "firstUrl_test",
+    url_second: "secondUrl_test",
     askUser: false,
-    PayloadTypes: "form",
+    PayloadTypes: "params",
   }
 })
 
-watch(() => store.JSON_form, (newValue) => {
+watch(() => storeJSONSharing.JSON_form, (newValue) => {
   formSettings.value = newValue
 })
+
+function submitForm (APISettings) {
+  const {
+    method,
+    url_first,
+    url_second,
+    askUser,
+    PayloadTypes
+  } = APISettings
+
+  const data = mainExtract.main(formSettings.value.render)
+
+  loading.value.submit = true
+  storeHttpRequest[`request_${method}`]({ url_first, url_second, PayloadTypes, data })
+    .then(res => {
+      console.log('進入then', res);
+    })
+    .catch(err => {
+      console.log('進入catch', err);
+    })
+    .finally(() => {
+      loading.value.submit = false
+    })
+}
 </script>
 
 <style lang="scss" scoped>
