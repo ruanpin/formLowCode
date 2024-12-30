@@ -61,7 +61,9 @@ const checkRequiredFieldsMapping = {
 function checkInput (eachObj, container) {
   if (eachObj.required && !eachObj.value) {
     container.push({
-      label: eachObj.label
+      label: eachObj.label,
+      msg: `「${eachObj.label}」 is required`,
+      alertType: 'rulewarning'
     })
   }
 }
@@ -76,7 +78,8 @@ function checkDate (eachObj, container) {
   if (isNaN(parsedDate.getTime()) || !regexDate.test(eachObj.value)) {
     container.push({
       label: eachObj.label,
-      msg: `「${eachObj.label}」 日期格式錯誤，請重新確認`
+      msg: `「${eachObj.label}」 日期格式錯誤`,
+      alertType: 'warning'
     })
   }
 }
@@ -97,10 +100,10 @@ export const mainService = {
     // console.log(valueContainer, 'valueContainer');
     // console.log(incompleteRequiredFieldsContainer, 'incompleteRequiredFieldsContainer');
     // console.log(validContainer, 'validContainer');
+    const reminderArr = [...incompleteRequiredFieldsContainer ,...validContainer]
     return {
       valueContainer,
-      incompleteRequiredFieldsContainer,
-      validContainer
+      reminderArr
     }
   }
 }

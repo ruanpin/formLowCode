@@ -288,14 +288,10 @@ function submitForm (APISettings) {
   } = APISettings
 
   const result = mainService.main(formSettings.value.render)
-  if (result.incompleteRequiredFieldsContainer.length || result.validContainer.length) {
-    for (const key in result.incompleteRequiredFieldsContainer) {
-      const obj = result.incompleteRequiredFieldsContainer[key]
-      alert.rulewarning(`「${obj.label}」 is required.`)
-    }
-    for (const key in result.validContainer) {
-      const obj = result.validContainer[key]
-      alert.warning(`${obj.msg}`)
+  if (result.reminderArr.length) {
+    for (const key in result.reminderArr) {
+      const obj = result.reminderArr[key]
+      alert[obj.alertType]?.(`${obj.msg}`)
     }
     return
   }
