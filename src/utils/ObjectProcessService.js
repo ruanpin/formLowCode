@@ -72,8 +72,7 @@ const formatValidMapping = {
 const regexDate = /^\d{4}\/\d{2}\/\d{2}$/;
 function checkDate (eachObj, container) {
   const parsedDate = new Date(eachObj.value)
-  // console.log(parsedDate, 'parsedDate', isNaN(parsedDate.getTime()));
-  if (!eachObj.value) return
+  if (!eachObj.value) return //此處只檢查格式，若空值則跳過，那是checkRequiredFieldsMapping的事
   if (isNaN(parsedDate.getTime()) || !regexDate.test(eachObj.value)) {
     container.push({
       label: eachObj.label,
@@ -82,7 +81,7 @@ function checkDate (eachObj, container) {
   }
 }
 
-export const mainExtract = {
+export const mainService = {
   main: (renderObj) => {
     if (!Array.isArray(renderObj)) return
     const valueContainer = {}

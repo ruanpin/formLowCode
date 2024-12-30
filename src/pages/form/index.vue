@@ -37,7 +37,7 @@
 import { ref, defineAsyncComponent, watch, inject } from 'vue'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
 import { useHttpRequestStore } from 'stores/HttpRequest.js'
-import { mainExtract } from 'src/utils/extractValue.js'
+import { mainService } from 'src/utils/ObjectProcessService.js'
 
 defineOptions({
   name: 'FormComponent'
@@ -287,7 +287,7 @@ function submitForm (APISettings) {
     PayloadTypes
   } = APISettings
 
-  const result = mainExtract.main(formSettings.value.render)
+  const result = mainService.main(formSettings.value.render)
   if (result.incompleteRequiredFieldsContainer.length || result.validContainer.length) {
     for (const key in result.incompleteRequiredFieldsContainer) {
       const obj = result.incompleteRequiredFieldsContainer[key]

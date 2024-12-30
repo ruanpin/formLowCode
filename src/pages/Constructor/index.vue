@@ -63,7 +63,7 @@ const constructorList = ref([
   { label: 'input', value: 'input' },
   { label: 'input(密碼型)', value: 'input_password' },
   { label: 'input(日期)', value: 'input_date' },
-  { label: 'select', value: 'select' },
+  // { label: 'select', value: 'select' },
 ])
 const formSettings = ref({
   render: [{}],
