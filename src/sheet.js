@@ -1,8 +1,8 @@
 export const input = {
   name: "姓名",
   type: "input",
+  label: "姓名",
   field: "f姓名",
-  color: "teal-4",
   value: "",
   required: false,
 }
@@ -17,20 +17,20 @@ export const date = {
 }
 
 export const radio = {
-  name: "各類規則套用設定",
+  name: "性別",
   type: "radio",
-  field: "f各類規則套用設定",
   label: "",
-  color: "teal-4",
+  field: "f各類規則套用設定",
+  value: "",
   options: [
     {
       label: "已完全設定",
-      type: "inner_checkbox",
+      // type: "inner_checkbox",
       value: "1",
     },
     {
       label: "未完全設定",
-      type: "inner_checkbox",
+      // type: "inner_checkbox",
       value: "0",
     },
   ],

@@ -7,6 +7,6 @@ defineOptions({
   name: 'SelectOptionsComponent'
 });
 const props = defineProps({
-  constructorList: Object,
+  formObj: Object,
 })
 </script>

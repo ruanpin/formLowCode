@@ -1,6 +1,5 @@
 <template>
   <div class="q-py-sm">
-    RadioComponent
     <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
     <q-option-group
       v-model="renderObject.value"

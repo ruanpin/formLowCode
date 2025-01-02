@@ -60,7 +60,8 @@ const ComponentsMapping = {
   input: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
-  select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue'))
+  radio: defineAsyncComponent(() => import('./components/RadioOptions/index.vue')),
+  select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
 }
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
@@ -72,7 +73,7 @@ defineOptions({
 const props = defineProps({
   constructorList: Object,
   formObj: Object,
-  formIndex: Number
+  formIndex: Number,
 })
 const emit = defineEmits(['update:formObj'])
 </script>

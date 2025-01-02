@@ -19,10 +19,10 @@
       </div>
       <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
-          <q-btn unelevated color="DAA520" @click="updateElement(true)">
+          <q-btn unelevated color="DAA520" @click="updateElement(true, formSettings.render)">
             <q-icon name="add"></q-icon>
           </q-btn>
-          <q-btn unelevated color="DAA520" @click="updateElement(false)" :disable="formSettings.render.length <= 1">
+          <q-btn unelevated color="DAA520" @click="updateElement(false, formSettings.render)" :disable="formSettings.render.length <= 1">
             <q-icon name="remove"></q-icon>
           </q-btn>
         </div>
@@ -44,6 +44,7 @@ import {
   Input,
   Input_password,
   Input_date,
+  Radio,
 } from 'src/formElementConstructors/Construsctors.js'
 
 import Popup_JSONString from 'components/Popup_JSONString.vue'
@@ -63,6 +64,7 @@ const constructorList = ref([
   { label: 'input', value: 'input' },
   { label: 'input(密碼型)', value: 'input_password' },
   { label: 'input(日期)', value: 'input_date' },
+  { label: 'radio', value: 'radio' },
   // { label: 'select', value: 'select' },
 ])
 const formSettings = ref({
@@ -79,7 +81,8 @@ const classMapping = {
   separator: Separator,
   input: Input,
   input_password: Input_password,
-  input_date: Input_date
+  input_date: Input_date,
+  radio: Radio,
 }
 function updateFormObj ({ formIndex, value }) {
   try {
@@ -90,12 +93,18 @@ function updateFormObj ({ formIndex, value }) {
     formSettings.value.render[formIndex] = Object.assign({}, { type: value })
   }
 }
-function updateElement (operate) {
-  if (operate) {
-    formSettings.value.render.push({})
-  } else if (!operate && formSettings.value.render.length > 1) {
-    formSettings.value.render.pop()
+function updateElement (operate, target) {
+  try {
+    if (!Array.isArray(target)) throw new Error('The target you want to be updated is not Array.')
+    if (operate) {
+      target.push({})
+    } else if (!operate && target.length > 1) {
+      target.pop()
+    }
+  } catch {
+    console.log('error, see above');
   }
+
 }
 </script>
 

@@ -45,20 +45,22 @@
 //   return result
 // }
 const getValueFunctionMapping = {
-  input: getInput,
-  input_password: getInput,
-  input_date: getInput,
+  input: getValue_InFirstLayer,
+  input_password: getValue_InFirstLayer,
+  input_date: getValue_InFirstLayer,
+  radio: getValue_InFirstLayer,
 }
-function getInput (eachObj, container) {
+function getValue_InFirstLayer (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
 }
 
 const checkRequiredFieldsMapping = {
-  input: checkInput,
-  input_password: checkInput,
-  input_date: checkInput,
+  input: checkValue_InFirstLayer,
+  input_password: checkValue_InFirstLayer,
+  input_date: checkValue_InFirstLayer,
+  radio: checkValue_InFirstLayer,
 }
-function checkInput (eachObj, container) {
+function checkValue_InFirstLayer (eachObj, container) {
   if (eachObj.required && !eachObj.value) {
     container.push({
       label: eachObj.label,
