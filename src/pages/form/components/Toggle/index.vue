@@ -1,14 +1,14 @@
 <template>
   <div class="q-py-sm">
     ToggleComponent
-    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
+    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <q-toggle
       v-model="renderObject.value"
-      :label="renderObject.value"
+      :label="renderObject.label"
       class=""
       dense
-      :false-value=renderObject.falsevalue
-      :true-value=renderObject.truevalue
+      :false-value="renderObject.falsevalue"
+      :true-value="renderObject.truevalue"
     />
   </div>
 </template>

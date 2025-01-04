@@ -1,7 +1,7 @@
 <template>
   <div class="q-py-sm">
     TextareaComponent
-    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required">*</span></div>
+    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <div class="col">
       <q-input
         v-model="renderObject.value"

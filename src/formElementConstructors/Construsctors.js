@@ -53,7 +53,26 @@ export class BasicOptionForRadio {
 
 export class Radio extends BasicRadio {
   constructor () {
-    super()
+    super();
     this.type = "radio"
+  }
+}
+
+class BasicToggle {
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.field = "";
+    this.value = "";
+    this.truevalue = "";
+    this.falsevalue = "";
+    this.required = false;
+  }
+}
+
+export class Toggle extends BasicToggle {
+  constructor() {
+    super();
+    this.type = "toggle";
   }
 }
