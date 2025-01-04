@@ -62,6 +62,7 @@ const ComponentsMapping = {
   input_date: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   radio: defineAsyncComponent(() => import('./components/RadioOptions/index.vue')),
   toggle: defineAsyncComponent(() => import('./components/ToggleOptions/index.vue')),
+  textarea: defineAsyncComponent(() => import('./components/TextareaOptions/index.vue')),
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
 }
 const ExtendsComponentsMapping = {

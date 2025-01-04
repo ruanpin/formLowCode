@@ -120,7 +120,7 @@ const formSettings = ref({
       field: "fNote",
       value: "",
       placeholder: "備註",
-      wordsLimit: "500",
+      limitWordsAmount: "500",
       required: false,
     },
     {

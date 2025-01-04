@@ -45,7 +45,8 @@ import {
   Input_password,
   Input_date,
   Radio,
-  Toggle
+  Toggle,
+  Textarea,
 } from 'src/formElementConstructors/Construsctors.js'
 
 import Popup_JSONString from 'components/Popup_JSONString.vue'
@@ -67,6 +68,7 @@ const constructorList = ref([
   { label: 'input(日期)', value: 'input_date' },
   { label: 'radio', value: 'radio' },
   { label: 'toggle', value: 'toggle' },
+  { label: 'textarea', value: 'textarea' },
   // { label: 'select', value: 'select' },
 ])
 const formSettings = ref({
@@ -86,6 +88,7 @@ const classMapping = {
   input_date: Input_date,
   radio: Radio,
   toggle: Toggle,
+  textarea: Textarea
 }
 function updateFormObj ({ formIndex, value }) {
   try {

@@ -52,7 +52,7 @@ export const textarea = {
   name: "備註",
   field: "f備註",
   label: "",
-  wordsLimit: "500",
+  limitWordsAmount: "500",
   placeholder: "備註",
   value: "",
   required: false

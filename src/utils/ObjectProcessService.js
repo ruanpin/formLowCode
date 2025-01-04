@@ -49,6 +49,8 @@ const getValueFunctionMapping = {
   input_password: getValue_InFirstLayer,
   input_date: getValue_InFirstLayer,
   radio: getValue_InFirstLayer,
+  toggle: getValue_InFirstLayer,
+  textarea: getValue_InFirstLayer,
 }
 function getValue_InFirstLayer (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
@@ -59,6 +61,8 @@ const checkRequiredFieldsMapping = {
   input_password: checkValue_InFirstLayer,
   input_date: checkValue_InFirstLayer,
   radio: checkValue_InFirstLayer,
+  toggle: checkValue_InFirstLayer,
+  textarea: checkValue_InFirstLayer,
 }
 function checkValue_InFirstLayer (eachObj, container) {
   if (eachObj.required && !eachObj.value) {

@@ -13,6 +13,7 @@ class BasicInput {
     this.required = false;
   }
 }
+
 export class Input extends BasicInput{
   constructor() {
     super();
@@ -23,13 +24,22 @@ export class Input_password extends BasicInput{
   constructor() {
     super();
     this.type = "input_password";
-    this.limitWordAmount = ""
+    this.limitWordsAmount = ""
   }
 }
 export class Input_date extends BasicInput{
   constructor() {
     super();
     this.type = "input_date";
+  }
+}
+
+export class Textarea extends BasicInput{
+  constructor() {
+    super();
+    this.type = "textarea";
+    this.limitWordsAmount = "";
+    this.placeholdet = "";
   }
 }
 

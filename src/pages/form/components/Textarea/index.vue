@@ -1,6 +1,5 @@
 <template>
   <div class="q-py-sm">
-    TextareaComponent
     <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <div class="col">
       <q-input
@@ -10,9 +9,10 @@
         outlined
         type="textarea"
         dense
+        :maxlength="Number(renderObject.limitWordsAmount)"
       />
       <div class="flex-re">
-        <div class="text-grey-9" v-show="renderObject.wordsLimit">字數上限 {{ renderObject?.value.length || 0 }} / {{ renderObject.wordsLimit }}</div>
+        <div class="text-grey-9" v-show="renderObject.limitWordsAmount">字數上限 {{ renderObject?.value.length || 0 }} / {{ renderObject.limitWordsAmount }}</div>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 defineOptions({
   name: 'TextareaComponent'
 })
-defineProps({
+const props = defineProps({
   renderObject: {
     type: Object,
     required: true
