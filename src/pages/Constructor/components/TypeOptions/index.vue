@@ -65,6 +65,7 @@ const ComponentsMapping = {
   textarea: defineAsyncComponent(() => import('./components/TextareaOptions/index.vue')),
   checkbox: defineAsyncComponent(() => import('./components/CheckboxOptions/index.vue')),
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
+  uploadImg: defineAsyncComponent(()=> import('./components/UploadImgOptions/index.vue')),
 }
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),

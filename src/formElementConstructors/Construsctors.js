@@ -122,3 +122,21 @@ export class Select extends BasicSelect {
     this.type = "select";
   }
 }
+
+class BasicUploadImg {
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.field = "";
+    this.value = null; // 空字串q-file元件會報警告，因此這裡使用null
+    this.previewImgURL = "";
+    this.required = false;
+  }
+}
+
+export class UploadImg extends BasicUploadImg {
+  constructor() {
+    super()
+    this.type = "uploadImg";
+  }
+}

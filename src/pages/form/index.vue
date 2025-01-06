@@ -171,6 +171,11 @@ const formSettings = ref({
     {
       name: "上傳大頭貼",
       type: "uploadImg",
+      field: "fImage",
+      label: "上傳大頭貼",
+      value: null,
+      previewImgURL: "",
+      required: false
     },
     {
       name: "多重輸入框",

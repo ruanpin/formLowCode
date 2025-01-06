@@ -53,6 +53,7 @@ const getValueFunctionMapping = {
   textarea: getValue_InFirstLayer,
   checkbox: getValue_InFirstLayer,
   select: getValue_InFirstLayer,
+  uploadImg: getValue_InFirstLayer,
 }
 function getValue_InFirstLayer (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
@@ -67,6 +68,7 @@ const checkRequiredFieldsMapping = {
   textarea: checkValue_InFirstLayer,
   checkbox: checkValue_InFirstLayer,
   select: checkValue_InFirstLayer,
+  uploadImg: checkValue_InFirstLayer,
 }
 function checkValue_InFirstLayer (eachObj, container) {
   if (eachObj.required &&

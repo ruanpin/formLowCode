@@ -49,6 +49,7 @@ import {
   Textarea,
   Checkbox,
   Select,
+  UploadImg,
 } from 'src/formElementConstructors/Construsctors.js'
 
 import Popup_JSONString from 'components/Popup_JSONString.vue'
@@ -73,6 +74,7 @@ const constructorList = ref([
   { label: 'textarea', value: 'textarea' },
   { label: 'checkbox', value: 'checkbox' },
   { label: 'select', value: 'select' },
+  { label: 'uploadImg-上傳照片', value: 'uploadImg' },
 ])
 const formSettings = ref({
   render: [{}],
@@ -93,7 +95,8 @@ const classMapping = {
   toggle: Toggle,
   textarea: Textarea,
   checkbox: Checkbox,
-  select: Select
+  select: Select,
+  uploadImg: UploadImg
 }
 function updateFormObj ({ formIndex, value }) {
   try {

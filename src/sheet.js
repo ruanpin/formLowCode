@@ -104,7 +104,15 @@ export const select = {
   required: false,
 }
 
-export const uploadImg = {}
+export const uploadImg = {
+  name: "上傳大頭貼",
+  type: "uploadImg",
+  field: "fImage",
+  label: "上傳大頭貼",
+  value: null,
+  previewImgURL: "",
+  required: false
+}
 
 export const mutiInputsColumn = {}
 
