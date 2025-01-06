@@ -38,8 +38,8 @@ export const radio = {
 }
 
 export const toggle = {
-  type: "toggle",
   name: "重新設定密碼",
+  type: "toggle",
   field: "f重新設定密碼",
   falsevalue: "保留目前密碼",
   truevalue: "重新設定密碼",
@@ -48,14 +48,37 @@ export const toggle = {
 }
 
 export const textarea = {
-  type: "textarea",
   name: "備註",
+  type: "textarea",
   field: "f備註",
   label: "",
   limitWordsAmount: "500",
   placeholder: "備註",
   value: "",
   required: false
+}
+
+export const checkbox = {
+  name: "系統權限設定",
+  type: "checkbox",
+  field: "f系統權限設定",
+  label: "系統權限設定",
+  value: [],
+  options: [
+    {
+      label: "人資部門",
+      value: "人資部門",
+    },
+    {
+      label: "資訊部門",
+      value: "資訊部門",
+    },
+    {
+      label: "行銷部門",
+      value: "行銷部門",
+    },
+  ],
+  required: false,
 }
 
 export const uploadImg = {}
@@ -104,7 +127,7 @@ export const mutiSelectsColumn = {
 export const dateRange = {}
 
 // 建議有input的跟沒input的要分開（待實作）
-export const checkbox = {
+export const checkbox_withInput = {
   name: "系統身分",
   type: "checkbox",
   field: "f帳號狀態",

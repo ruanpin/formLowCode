@@ -1,3 +1,5 @@
+import { extend } from "quasar";
+
 export class Separator {
   constructor() {
     this.type = "separator";
@@ -49,7 +51,7 @@ class BasicRadio {
     this.label = "";
     this.field = "";
     this.value = "";
-    this.options = [{ label: "", value: "" }]
+    this.options = [{ label: "", value: "" }];
     this.required = false;
   }
 }
@@ -64,7 +66,7 @@ export class BasicOptionForRadio {
 export class Radio extends BasicRadio {
   constructor () {
     super();
-    this.type = "radio"
+    this.type = "radio";
   }
 }
 
@@ -84,5 +86,30 @@ export class Toggle extends BasicToggle {
   constructor() {
     super();
     this.type = "toggle";
+  }
+}
+
+class BasicCheckbox {
+  constructor() {
+    this.name = "";
+    this.label = "";
+    this.field = "";
+    this.value = [];
+    this.options = [{ label: "", value: "" }];
+    this.required = false;
+  }
+}
+
+export class BasicOptionForCheckbox {
+  constructor() {
+    this.label = "";
+    this.value = "";
+  }
+}
+
+export class Checkbox extends BasicCheckbox {
+  constructor() {
+    super()
+    this.type = "checkbox";
   }
 }

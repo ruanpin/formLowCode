@@ -51,6 +51,7 @@ const getValueFunctionMapping = {
   radio: getValue_InFirstLayer,
   toggle: getValue_InFirstLayer,
   textarea: getValue_InFirstLayer,
+  checkbox: getValue_InFirstLayer,
 }
 function getValue_InFirstLayer (eachObj, container) {
   if (eachObj.value) container[eachObj.field] = eachObj.value
@@ -63,9 +64,16 @@ const checkRequiredFieldsMapping = {
   radio: checkValue_InFirstLayer,
   toggle: checkValue_InFirstLayer,
   textarea: checkValue_InFirstLayer,
+  checkbox: checkValue_InFirstLayer,
 }
 function checkValue_InFirstLayer (eachObj, container) {
-  if (eachObj.required && !eachObj.value) {
+  if (eachObj.required &&
+      (
+        eachObj.value === null ||
+        (Array.isArray(eachObj.value) && !eachObj.value.length) ||
+        !eachObj.value
+      )
+  ) {
     container.push({
       label: eachObj.label,
       msg: `「${eachObj.label}」 is required`,

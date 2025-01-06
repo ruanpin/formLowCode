@@ -63,6 +63,7 @@ const ComponentsMapping = {
   radio: defineAsyncComponent(() => import('./components/RadioOptions/index.vue')),
   toggle: defineAsyncComponent(() => import('./components/ToggleOptions/index.vue')),
   textarea: defineAsyncComponent(() => import('./components/TextareaOptions/index.vue')),
+  checkbox: defineAsyncComponent(() => import('./components/CheckboxOptions/index.vue')),
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
 }
 const ExtendsComponentsMapping = {
