@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated  class="bg-orange-8">
       <q-toolbar>
         <q-btn
           flat
@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          低代碼表單元件開發工具 Low-code Form Component Development Tool
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Vue 3 / Quasar / Pinia / Vite</div>
       </q-toolbar>
     </q-header>
 

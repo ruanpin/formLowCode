@@ -1,8 +1,8 @@
 {
   "name": "formlowcode",
   "version": "0.0.1",
-  "description": "formLowCodePlatform",
-  "productName": "formLowCodePlatform",
+  "description": "FormLowCodePlatform",
+  "productName": "FormLowCodePlatform",
   "author": "Vincent <oa5136@gmail.com>",
   "private": true,
   "scripts": {
