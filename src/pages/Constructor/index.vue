@@ -48,12 +48,12 @@ import {
   Toggle,
   Textarea,
   Checkbox,
+  Select,
 } from 'src/formElementConstructors/Construsctors.js'
 
 import Popup_JSONString from 'components/Popup_JSONString.vue'
 
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
-import { checkbox } from 'src/sheet';
 
 defineOptions({
   name: 'ConstructorComponent'
@@ -72,7 +72,7 @@ const constructorList = ref([
   { label: 'toggle', value: 'toggle' },
   { label: 'textarea', value: 'textarea' },
   { label: 'checkbox', value: 'checkbox' },
-  // { label: 'select', value: 'select' },
+  { label: 'select', value: 'select' },
 ])
 const formSettings = ref({
   render: [{}],
@@ -93,6 +93,7 @@ const classMapping = {
   toggle: Toggle,
   textarea: Textarea,
   checkbox: Checkbox,
+  select: Select
 }
 function updateFormObj ({ formIndex, value }) {
   try {

@@ -81,6 +81,29 @@ export const checkbox = {
   required: false,
 }
 
+export const select = {
+  name: "居住地",
+  type: "select",
+  field: "fResidence",
+  label: "居住地",
+  value: "",
+  options: [
+    {
+      label: "台北市",
+      value: "台北市",
+    },
+    {
+      label: "新北市",
+      value: "新北市",
+    },
+    {
+      label: "基隆市",
+      value: "基隆市",
+    },
+  ],
+  required: false,
+}
+
 export const uploadImg = {}
 
 export const mutiInputsColumn = {}

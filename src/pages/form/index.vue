@@ -51,6 +51,7 @@ const componentsRenderingMap = {
   toggle: defineAsyncComponent(()=> import('./components/Toggle/index.vue')),
   textarea: defineAsyncComponent(()=> import('./components/Textarea/index.vue')),
   checkbox: defineAsyncComponent(()=> import('./components/Checkbox/index.vue')),
+  select: defineAsyncComponent(()=> import('./components/Select/index.vue')),
   uploadImg: defineAsyncComponent(()=> import('./components/UploadImg/index.vue')),
   mutiInputsColumn: defineAsyncComponent(()=> import('./components/MutiInputsColumn/index.vue')),
   mutiSelectsColumn: defineAsyncComponent(()=> import('./components/MutiSelectsColumn/index.vue')),
@@ -108,9 +109,9 @@ const formSettings = ref({
       type: "toggle",
       label: "重設密碼",
       field: "fResetPWD",
-      value: "保留目前密碼",
-      falsevalue: "保留目前密碼",
-      truevalue: "重設密碼",
+      value: "",
+      falsevalue: false,
+      truevalue: true,
       required: false,
     },
     {
@@ -141,6 +142,28 @@ const formSettings = ref({
         {
           label: "行銷部門",
           value: "行銷部門",
+        },
+      ],
+      required: false,
+    },
+    {
+      name: "居住地",
+      type: "select",
+      field: "fResidence",
+      label: "居住地",
+      value: "",
+      options: [
+        {
+          label: "台北市",
+          value: "台北市",
+        },
+        {
+          label: "新北市",
+          value: "新北市",
+        },
+        {
+          label: "基隆市",
+          value: "基隆市",
         },
       ],
       required: false,
