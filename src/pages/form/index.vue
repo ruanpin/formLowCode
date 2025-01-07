@@ -292,8 +292,9 @@ const formSettings = ref({
   ],
   submit_APISettings: {
     method: "POST",
-    url_first: "firstUrl_test",
-    url_second: "secondUrl_test",
+    urlsArr: [
+      { url: "firstUrl_test" },
+    ],
     askUser: false,
     PayloadTypes: "params",
   }
@@ -306,8 +307,7 @@ watch(() => storeJSONSharing.JSON_form, (newValue) => {
 function submitForm (APISettings) {
   const {
     method,
-    url_first,
-    url_second,
+    urlsArr,
     askUser,
     PayloadTypes
   } = APISettings
@@ -322,7 +322,7 @@ function submitForm (APISettings) {
   }
 
   loading.value.submit = true
-  storeHttpRequest[`request_${method}`]({ url_first, url_second, PayloadTypes, data: result.valueContainer })
+  storeHttpRequest[`request_${method}`]({ urlsArr, PayloadTypes, data: result.valueContainer })
     .then(res => {
       console.log('進入then', res);
     })

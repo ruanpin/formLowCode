@@ -50,8 +50,10 @@ function AXIOS() {
 
 export const request = {
   getBaseURL: (controller) => {
+    let ct;
+    if (controller) ct = controller + '/'
     const obj = {
-      baseURL: `${app.config.globalProperties.$appsetting.AppUrl}/api/${controller}/`,
+      baseURL: `${app.config.globalProperties.$appsetting.AppUrl}/api/${ct ? ct : ''}`,
     };
     return JSON.parse(JSON.stringify(obj));
   },
