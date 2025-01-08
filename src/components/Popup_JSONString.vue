@@ -2,8 +2,9 @@
   <q-dialog v-model="dialog.JSONStringResult.isShow" >
     <q-card style="max-width: 1200px; width: 650px;">
       <q-card-section>
-        <div class="text-h6">
-          JSON String Result
+        <div class="text-h6 flex-sb">
+          <div>JSON String Result</div>
+          <q-btn icon="close" flat round dense v-close-popup />
         </div>
       </q-card-section>
 
@@ -11,15 +12,18 @@
         {{ formSettings }}
       </q-card-section>
 
-      <q-card-actions align="right">
-        <q-btn unelevated color="primary" @click="clickToCopy" :disable="disable.copy">
-          <q-icon name="content_copy" class="q-mr-xs"></q-icon>copy
-        </q-btn>
-        <q-btn unelevated color="light-green-7" @click="sentToCompiler" :loading="loading.sendToCompiler">
-          <q-icon name="send" class="q-mr-xs"></q-icon>傳送至編譯器預覽
-        </q-btn>
-        <q-btn flat label="close" color="primary" v-close-popup />
-      </q-card-actions>
+      <div class="operaterContainer row q-px-md q-pt-md">
+        <div class="col-md-2 col-sm-12 col-xs-12 row q-mb-sm">
+          <q-btn class="col" unelevated color="primary" @click="clickToCopy" :disable="disable.copy">
+            <q-icon name="content_copy" class="q-mr-xs"></q-icon>copy
+          </q-btn>
+        </div>
+        <div class="col-md col-sm-12 col-xs-12 row q-mb-sm btnGutterPC">
+          <q-btn class="col" unelevated color="light-green-7" @click="sentToCompiler" :loading="loading.sendToCompiler">
+            <q-icon name="send" class="q-mr-xs"></q-icon>傳送至編譯器預覽
+          </q-btn>
+        </div>
+      </div>
     </q-card>
   </q-dialog>
 </template>
@@ -85,3 +89,11 @@ function clickToCopy () {
 }
 
 </script>
+
+<style lang="scss" scoped>
+  .btnGutterPC {
+    @media (min-width: 1024px) {
+      padding-left: 6px;
+    }
+  }
+</style>
