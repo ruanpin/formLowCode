@@ -127,21 +127,21 @@ const formSettings = ref({
     {
       name: "系統權限設定",
       type: "checkbox",
-      field: "f系統權限設定",
+      field: "fSystemAuth",
       label: "系統權限設定",
       value: [],
       options: [
         {
           label: "人資部門",
-          value: "人資部門",
+          value: "HR",
         },
         {
           label: "資訊部門",
-          value: "資訊部門",
+          value: "IT",
         },
         {
           label: "行銷部門",
-          value: "行銷部門",
+          value: "MK",
         },
       ],
       required: false,
@@ -340,6 +340,7 @@ function submitForm (APISettings) {
     background-color: #d9dbb1 ;
     border-radius: 24px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
-    min-width: 450px;
+    min-width: 300px;
+    width: 100%;
   }
 </style>

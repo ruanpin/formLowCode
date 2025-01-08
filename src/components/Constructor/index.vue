@@ -1,5 +1,5 @@
 <template>
-  <div class="container q-pa-md q-mr-xl height">
+  <div class="container q-pa-md height">
     <div class="flex-jc">
       <q-chip outline square size="18px" icon="integration_instructions" color="grey-9">
         表單JSON String產生器
@@ -140,14 +140,16 @@ function updateAPISettings ({ key, value }) {
     background-color: #decb99 ;
     border-radius: 24px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
-    width: 500px;
+    min-width: 300px;
+    width: 100%;
+    // width: 500px;
     .height {
       min-height: 570px;
     }
     .separator {
       margin: 12px 0px;
       height: 1px;
-      width: 100%;
+      // width: 100%;
       background-color: #aba3a3;
     }
     .main-title {
