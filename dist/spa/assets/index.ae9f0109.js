@@ -1,0 +1,1 @@
+import{ae as e,av as t}from"./index.3e9da833.js";const r=Object.assign({name:"InputExtendsComponent_Password"},{__name:"index",props:{formObj:Object},setup(n){return(a,o)=>(e(),t("div"))}});export{r as default};
