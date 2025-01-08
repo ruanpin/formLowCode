@@ -20,6 +20,6 @@ defineProps({
   .sep {
     height: 2px;
     width: 100%;
-    background-color: #9F9F9F;
+    background-color: rgba(255, 255, 255, .5)
   }
 </style>

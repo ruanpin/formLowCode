@@ -23,7 +23,7 @@
           :formIndex="index"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
-        <div class="separator"></div>
+        <!-- <div class="separator"></div> -->
       </div>
       <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
@@ -137,20 +137,19 @@ function updateAPISettings ({ key, value }) {
 
 <style lang="scss" scoped>
   .container {
-    background-color: #decb99 ;
+    background-color: #ddd0ae ;
+    // background-color: transparent ;
     border-radius: 24px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
     min-width: 300px;
     width: 100%;
-    // width: 500px;
-    .height {
-      min-height: 570px;
-    }
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: sepia(80%);
     .separator {
       margin: 12px 0px;
       height: 1px;
       // width: 100%;
-      background-color: #aba3a3;
+      background-color: rgba(255, 255, 255, .5)
     }
     .main-title {
       font-weight: 700;
