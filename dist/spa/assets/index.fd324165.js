@@ -1,0 +1,1 @@
+import{a6 as e,at as t}from"./index.857ad1e3.js";const c=Object.assign({name:"DateRangeComponent"},{__name:"index",props:{renderObject:{type:Object,required:!0}},setup(n){return(a,r)=>(e(),t("div",null," DateRangeComponent "))}});export{c as default};

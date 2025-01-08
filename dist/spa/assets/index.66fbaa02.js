@@ -1,1 +1,0 @@
-import{ae as e,av as t}from"./index.e49acdf2.js";const a=Object.assign({name:"MutiSelectsColumnComponent"},{__name:"index",props:{renderObject:{type:Object,required:!0}},setup(n){return(o,r)=>(e(),t("div",null," MutiSelectsColumnComponent "))}});export{a as default};
