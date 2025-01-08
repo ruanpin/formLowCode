@@ -6,12 +6,12 @@ import qs from "qs";
 // import { ref, computed } from 'vue'
 
 export const useHttpRequestStore = defineStore('HttpRequest', () => {
-  function request_GET({ url_first, url_second, data }) {
+  function request_GET({ urlsArr, data }) {
     return new Promise((resolve, reject) => {
-      // console.log('request_GET', url_first, url_second, data);
+      // console.log('request_GET', urlsArr, data);
       request
-        .addFORMAuth(url_first)
-        .get(`/${url_second}`, {
+        .addFORMAuth()
+        .get(`/${urlsArr.map(e => e.url).join('/')}`, {
           params: data,
           // paramsSerializer: (params) => {
           //   return qs.stringify(params);
@@ -27,12 +27,12 @@ export const useHttpRequestStore = defineStore('HttpRequest', () => {
     })
   }
 
-  function request_POST({ url_first, url_second, data }) {
+  function request_POST({ urlsArr, data }) {
     return new Promise((resolve, reject) => {
-      // console.log('request_POST', url_first, url_second, data);
+      // console.log('request_POST', urlsArr, data);
       request
-        .addFORMAuth(url_first)
-        .post(`/${url_second}`, tools.ObjToFrom(data))
+        .addFORMAuth()
+        .post(`/${urlsArr.map(e => e.url).join('/')}`, tools.ObjToFrom(data))
         .then((res) => {
           const data = res.data
           resolve(data)
@@ -43,12 +43,12 @@ export const useHttpRequestStore = defineStore('HttpRequest', () => {
     })
   }
 
-  function request_PUT({ url_first, url_second, data }) {
+  function request_PUT({ urlsArr, data }) {
     return new Promise((resolve, reject) => {
-      // console.log('request_POST', url_first, url_second, data);
+      // console.log('request_POST', urlsArr, data);
       request
-        .addFORMAuth(url_first)
-        .put(`/${url_second}`, tools.ObjToFrom(data))
+        .addFORMAuth()
+        .put(`/${urlsArr.map(e => e.url).join('/')}`, tools.ObjToFrom(data))
         .then((res) => {
           const data = res.data
           resolve(data)
@@ -59,12 +59,12 @@ export const useHttpRequestStore = defineStore('HttpRequest', () => {
     })
   }
 
-  function request_DELETE({ url_first, url_second, PayloadTypes, data }) {
+  function request_DELETE({ urlsArr, PayloadTypes, data }) {
     return new Promise((resolve, reject) => {
-      // console.log('request_DELETE', PayloadTypes, url_first, url_second, data);
+      // console.log('request_DELETE', PayloadTypes, urlsArr, data);
       request
-        .addFORMAuth(url_first)
-        .delete(PayloadTypes === 'params' ? `/${url_second}?${data}` : '', PayloadTypes === 'form' ? { data } : '')
+        .addFORMAuth()
+        .delete(`/${urlsArr.map(e => e.url).join('/')}`, PayloadTypes === 'params' ? { params: data } : { data })
         .then((res) => {
           const data = res.data
           resolve(data)
