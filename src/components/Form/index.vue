@@ -15,19 +15,20 @@
         </div>
       </div>
     </template>
-    <div class="q-mt-sm flex-ac flex-re">
+    <div class="q-mt-sm flex-ac">
       <q-btn
         flat
         unelevated
+        rounded
+        class="col"
         style="
-          background: goldenrod;
-          color: white
+          background: white;
         "
         size="md"
         :loading="loading.submit"
         @click="submitForm(formSettings.submit_APISettings)"
       >
-        submit
+        <span>submit</span>
       </q-btn>
     </div>
   </div>
@@ -337,10 +338,12 @@ function submitForm (APISettings) {
 
 <style lang="scss" scoped>
   .container {
-    background-color: #d9dbb1 ;
-    border-radius: 24px;
-    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
+    background-color: transparent ;
     min-width: 300px;
     width: 100%;
+    border-radius: 24px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
   }
 </style>
