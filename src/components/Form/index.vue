@@ -106,7 +106,20 @@ const formSettings = ref({
                   value: "",
                   color: "teal-4",
                   required: false,
-                  cr_List: [],
+                  cr_List: [
+                    {
+                      name: "綽號",
+                      type: "input",
+                      label: "綽號第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ],
                   cr_type: "pureValue",
                   cr_trigger: "123"
                 },
@@ -366,15 +379,18 @@ function resetIndex (renderArr) {
 }
 function deleteCrListRecursion (objectInCrList) {
   // 條件判斷(CR)刪除深層Cr_List: 當父元素不符合條件時，遞迴將所有深層的cr元素刪除
-  console.log(objectInCrList, '當前處理目標');
-  if (!Array.isArray(objectInCrList.cr_List)) return
   for (const key in objectInCrList.cr_List) {
     const childObj = objectInCrList.cr_List[key]
     childObj.value = ""
     formSettings.value.render.splice(childObj.index, 1)
     resetIndex(formSettings.value.render)
-    if (childObj.cr_List.length) deleteCrListRecursion(childObj)
+    if (Array.isArray(objectInCrList.cr_List) && childObj.cr_List.length) deleteCrListRecursion(childObj)
   }
+}
+function handlerDeleteRelativeElements (objectInCrList) {
+  resetIndex(formSettings.value.render)
+  objectInCrList.value = ""
+  if (Array.isArray(objectInCrList.cr_List)) deleteCrListRecursion(objectInCrList)
 }
 function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   if (execute) {
@@ -383,9 +399,7 @@ function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   } else {
     if (formSettings.value.render[targetIndex] === objectInCrList) {
       formSettings.value.render.splice(targetIndex, 1)
-      resetIndex(formSettings.value.render)
-      objectInCrList.value = ""
-      deleteCrListRecursion(objectInCrList)
+      handlerDeleteRelativeElements(objectInCrList)
     }
   }
 }
