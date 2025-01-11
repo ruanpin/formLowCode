@@ -5,13 +5,14 @@
         編譯器(compiler)元件
       </q-chip>
     </div>
-    <template v-for="(renderObj, index) in formSettings.render" :key="index">
+    <template v-for="renderObj in formSettings.render" :key="renderObj.index">
       <div class="row items-center">
         <div class="col">
           <component
             :is="componentsRenderingMap[renderObj.type]"
             :renderObject="renderObj"
             :formSettingsRenderList="formSettings.render"
+            @updateCrObjectToRenderList="updateCrObjectToRenderList"
           />
         </div>
       </div>
@@ -70,6 +71,7 @@ const loading = ref({
 const formSettings = ref({
   render: [
     {
+      index: "0",
       name: "姓名",
       type: "input",
       label: "姓名",
@@ -77,31 +79,35 @@ const formSettings = ref({
       value: "",
       color: "teal-4",
       required: false,
-      cr_referenced: [
-        { referIndex: "1", type: "pureValue", trigger: "123" }
+      cr_List: [
+        {
+          name: "綽號",
+          type: "input",
+          label: "綽號",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          cr_List: [],
+          cr_type: "pureValue",
+          cr_trigger: "123"
+        },
+        {
+          name: "籍貫",
+          type: "input",
+          label: "籍貫",
+          field: "fNativeFrom",
+          value: "",
+          color: "teal-4",
+          required: false,
+          cr_List: [],
+          cr_type: "pureValue",
+          cr_trigger: "1234"
+        },
       ],
-      cr: false,
-      cr_show: false,
-      cr_targetIndex: "",
-      cr_targetType: "",
-      cr_targetTrigger: ""
     },
     {
-      name: "綽號",
-      type: "input",
-      label: "綽號",
-      field: "fNickName",
-      value: "",
-      color: "teal-4",
-      required: false,
-      cr_referenced: [],
-      cr: true,
-      cr_show: false,
-      cr_targetIndex: "0",
-      cr_targetType: "pureValue",
-      cr_targetTrigger: "123"
-    },
-    {
+      index: "1",
       name: "生效日期",
       type: "input_date",
       label: "生效日期",
@@ -110,6 +116,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "2",
       name: "過期日期",
       type: "radio",
       label: "過期日期",
@@ -130,6 +137,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "3",
       name: "重設密碼",
       type: "toggle",
       label: "重設密碼",
@@ -140,6 +148,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "4",
       name: "備註",
       type: "textarea",
       label: "備註",
@@ -150,6 +159,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "5",
       name: "系統權限設定",
       type: "checkbox",
       field: "fSystemAuth",
@@ -172,6 +182,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "6",
       name: "居住地",
       type: "select",
       field: "fResidence",
@@ -194,6 +205,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "7",
       name: "上傳大頭貼",
       type: "uploadImg",
       field: "fImage",
@@ -203,10 +215,12 @@ const formSettings = ref({
       required: false
     },
     {
+      index: "8",
       name: "多重輸入框",
       type: "mutiInputsColumn",
     },
     {
+      index: "9",
       type: "mutiSelectsColumn",
       name: "語言程度",
       label: "語言程度",
@@ -245,6 +259,7 @@ const formSettings = ref({
       required: false,
     },
     {
+      index: "10",
       name: "日期起訖",
       type: "dateRange",
       label: "日期起訖",
@@ -312,6 +327,7 @@ const formSettings = ref({
     //   required: false,
     // },
     {
+      index: "11",
       type: "separator",
     },
   ],
@@ -328,6 +344,23 @@ const formSettings = ref({
 watch(() => storeJSONSharing.JSON_form, (newValue) => {
   formSettings.value = newValue
 })
+
+function resetIndex (renderArr) {
+  renderArr.forEach((e, i) => {
+    e.index = i
+  })
+}
+function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
+  if (execute) {
+    formSettings.value.render.splice(targetIndex, 0, objectInCrList)
+    resetIndex(formSettings.value.render)
+  } else {
+    if (formSettings.value.render[targetIndex] === objectInCrList) {
+      formSettings.value.render.splice(targetIndex, 1)
+      resetIndex(formSettings.value.render)
+    }
+  }
+}
 
 function submitForm (APISettings) {
   const {

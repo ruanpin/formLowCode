@@ -37,7 +37,10 @@
         </div>
       </div>
       <div class="flex">
-        <q-btn unelevated color="primary" class="col" @click="dialog.JSONStringResult.isShow = true">
+        <q-btn unelevated color="primary" class="col" @click="() => {
+          dialog.JSONStringResult.isShow = true;
+          resetIndex(formSettings.render);
+        }">
           <q-icon name="send"></q-icon>
         </q-btn>
       </div>
@@ -133,6 +136,11 @@ function updateElement (operate, target) {
 }
 function updateAPISettings ({ key, value }) {
   formSettings.value.submit_APISettings[key] = value
+}
+function resetIndex (renderArr) {
+  renderArr.forEach((e, i) => {
+    e.index = i
+  })
 }
 </script>
 
