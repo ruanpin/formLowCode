@@ -71,7 +71,7 @@ const loading = ref({
 const formSettings = ref({
   render: [
     {
-      index: "0",
+      index: 0,
       name: "姓名",
       type: "input",
       label: "姓名",
@@ -88,26 +88,40 @@ const formSettings = ref({
           value: "",
           color: "teal-4",
           required: false,
-          cr_List: [],
+          cr_List: [
+            {
+              name: "綽號",
+              type: "input",
+              label: "綽號第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              cr_List: [
+                {
+                  name: "綽號",
+                  type: "input",
+                  label: "綽號第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  cr_List: [],
+                  cr_type: "pureValue",
+                  cr_trigger: "123"
+                },
+              ],
+              cr_type: "pureValue",
+              cr_trigger: "123"
+            },
+          ],
           cr_type: "pureValue",
           cr_trigger: "123"
-        },
-        {
-          name: "籍貫",
-          type: "input",
-          label: "籍貫",
-          field: "fNativeFrom",
-          value: "",
-          color: "teal-4",
-          required: false,
-          cr_List: [],
-          cr_type: "pureValue",
-          cr_trigger: "1234"
         },
       ],
     },
     {
-      index: "1",
+      index: 1,
       name: "生效日期",
       type: "input_date",
       label: "生效日期",
@@ -116,7 +130,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "2",
+      index: 2,
       name: "過期日期",
       type: "radio",
       label: "過期日期",
@@ -137,7 +151,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "3",
+      index: 3,
       name: "重設密碼",
       type: "toggle",
       label: "重設密碼",
@@ -148,7 +162,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "4",
+      index: 4,
       name: "備註",
       type: "textarea",
       label: "備註",
@@ -159,7 +173,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "5",
+      index: 5,
       name: "系統權限設定",
       type: "checkbox",
       field: "fSystemAuth",
@@ -182,7 +196,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "6",
+      index: 6,
       name: "居住地",
       type: "select",
       field: "fResidence",
@@ -205,7 +219,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "7",
+      index: 7,
       name: "上傳大頭貼",
       type: "uploadImg",
       field: "fImage",
@@ -215,12 +229,12 @@ const formSettings = ref({
       required: false
     },
     {
-      index: "8",
+      index: 8,
       name: "多重輸入框",
       type: "mutiInputsColumn",
     },
     {
-      index: "9",
+      index: 9,
       type: "mutiSelectsColumn",
       name: "語言程度",
       label: "語言程度",
@@ -259,7 +273,7 @@ const formSettings = ref({
       required: false,
     },
     {
-      index: "10",
+      index: 10,
       name: "日期起訖",
       type: "dateRange",
       label: "日期起訖",
@@ -327,7 +341,7 @@ const formSettings = ref({
     //   required: false,
     // },
     {
-      index: "11",
+      index: 11,
       type: "separator",
     },
   ],
@@ -350,6 +364,18 @@ function resetIndex (renderArr) {
     e.index = i
   })
 }
+function deleteCrListRecursion (objectInCrList) {
+  // 條件判斷(CR)刪除深層Cr_List: 當父元素不符合條件時，遞迴將所有深層的cr元素刪除
+  console.log(objectInCrList, '當前處理目標');
+  if (!Array.isArray(objectInCrList.cr_List)) return
+  for (const key in objectInCrList.cr_List) {
+    const childObj = objectInCrList.cr_List[key]
+    childObj.value = ""
+    formSettings.value.render.splice(childObj.index, 1)
+    resetIndex(formSettings.value.render)
+    if (childObj.cr_List.length) deleteCrListRecursion(childObj)
+  }
+}
 function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   if (execute) {
     formSettings.value.render.splice(targetIndex, 0, objectInCrList)
@@ -358,6 +384,8 @@ function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
     if (formSettings.value.render[targetIndex] === objectInCrList) {
       formSettings.value.render.splice(targetIndex, 1)
       resetIndex(formSettings.value.render)
+      objectInCrList.value = ""
+      deleteCrListRecursion(objectInCrList)
     }
   }
 }

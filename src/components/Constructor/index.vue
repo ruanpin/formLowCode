@@ -24,7 +24,6 @@
           :formSettings="formSettings"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
-        <!-- <div class="separator"></div> -->
       </div>
       <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
