@@ -51,11 +51,21 @@
         :formObj="formObj"
       />
     </component>
+    <div class="row q-mt-sm" v-show="formObj.type">
+      <q-btn unelevated color="orange-8" class="col" @click="dialog.ConditionalRenderSetting.isShow = true">
+        <q-icon class="q-mr-xs" name="settings"></q-icon>條件渲染設定
+      </q-btn>
+    </div>
+    <Popup_ConditionalRenderSetting
+      :dialog="dialog"
+      :formSettings="formSettings"
+      :formObj="formObj"
+    />
   </div>
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 const ComponentsMapping = {
   input: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
@@ -71,13 +81,22 @@ const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputExtends/Date/index.vue')),
 }
+const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('./components/_ConditionalRenderSetting/index.vue'))
+
 defineOptions({
   name: 'TypeOptionsComponent'
 });
 const props = defineProps({
   constructorList: Object,
+  formSettings: Object,
   formObj: Object,
   formIndex: Number,
 })
 const emit = defineEmits(['update:formObj'])
+
+const dialog = ref({
+  ConditionalRenderSetting: {
+    isShow: false
+  }
+})
 </script>

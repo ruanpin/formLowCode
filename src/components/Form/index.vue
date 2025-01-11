@@ -11,6 +11,7 @@
           <component
             :is="componentsRenderingMap[renderObj.type]"
             :renderObject="renderObj"
+            :formSettingsRenderList="formSettings.render"
           />
         </div>
       </div>
@@ -76,6 +77,29 @@ const formSettings = ref({
       value: "",
       color: "teal-4",
       required: false,
+      cr_referenced: [
+        { referIndex: "1", type: "pureValue", trigger: "123" }
+      ],
+      cr: false,
+      cr_show: false,
+      cr_targetIndex: "",
+      cr_targetType: "",
+      cr_targetTrigger: ""
+    },
+    {
+      name: "綽號",
+      type: "input",
+      label: "綽號",
+      field: "fNickName",
+      value: "",
+      color: "teal-4",
+      required: false,
+      cr_referenced: [],
+      cr: true,
+      cr_show: false,
+      cr_targetIndex: "0",
+      cr_targetType: "pureValue",
+      cr_targetTrigger: "123"
     },
     {
       name: "生效日期",

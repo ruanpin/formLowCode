@@ -30,10 +30,9 @@
 
 <script setup>
 import { ref, inject } from 'vue'
-import { useQuasar } from 'quasar'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
 defineOptions({
-  name: 'EssentialLink'
+  name: 'Popup_JSONStringResult'
 })
 const props = defineProps({
   dialog: {
@@ -45,7 +44,6 @@ const props = defineProps({
   }
 })
 const store = useJSONSharingStore()
-const $q = useQuasar()
 const alert = inject('alert')
 const loading = ref({
   sendToCompiler: false,

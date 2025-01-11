@@ -206,6 +206,12 @@ body {
   color: #4F615C !important;
 }
 // --------------------------------------------
+.ellipsis {
+  white-space: nowrap;        /* 強制單行顯示 */
+  overflow: hidden;          /* 隱藏超出範圍的內容 */
+  text-overflow: ellipsis;   /* 超出部分用 "..." 表示 */
+}
+// --------------------------------------------
 .options-title {
   font-weight: 700;
   font-size: 16px;

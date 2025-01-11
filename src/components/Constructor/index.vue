@@ -21,6 +21,7 @@
           :constructorList="constructorList"
           :formObj="formObj"
           :formIndex="index"
+          :formSettings="formSettings"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
         <!-- <div class="separator"></div> -->
@@ -60,11 +61,11 @@ import {
   UploadImg,
 } from 'src/formElementConstructors/Construsctors.js'
 
-import Popup_JSONString from 'components/Popup_JSONString.vue'
 import Bar from 'components/Bar.vue'
 
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
 import HTTPRequsetSettingsComponent from './components/HTTPRequsetSettings/index.vue'
+import Popup_JSONString from './components/Popup_JSONString/index.vue'
 
 defineOptions({
   name: 'ConstructorComponent'
