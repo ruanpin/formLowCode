@@ -1,3 +1,9 @@
+const compareTypeMapping = {
+  pureValue: ({ cr_trigger, newValue }) => {
+    return cr_trigger === newValue
+  },
+}
+
 export function updateCrObjectToRenderList ({reversedCRList, renderObject, emits, newValue}) {
   for (const key in reversedCRList) {
     const objectInCrList = reversedCRList[key]
@@ -5,7 +11,11 @@ export function updateCrObjectToRenderList ({reversedCRList, renderObject, emits
     const targetIndexWhenDeleting = Number(objectInCrList.index) // 由於新增進render Array後index會重置，依重置後index為主，才能抓到正確位置
     // pureValue only
     emits('updateCrObjectToRenderList', {
-      execute: objectInCrList.cr_trigger == newValue,
+      execute: compareTypeMapping[objectInCrList.cr_type]?.({
+        cr_trigger: objectInCrList.cr_trigger,
+        newValue
+      }),
+      // execute: objectInCrList.cr_trigger == newValue,
       targetIndex: objectInCrList.cr_trigger == newValue ? targetIndexWhenAdding : targetIndexWhenDeleting,
       objectInCrList
     })

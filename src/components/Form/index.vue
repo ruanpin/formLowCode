@@ -81,34 +81,40 @@ const formSettings = ref({
       required: false,
       cr_List: [
         {
-          name: "綽號",
+          name: "綽號第一層",
           type: "input",
-          label: "綽號",
+          label: "綽號第一層",
           field: "fNickName",
           value: "",
           color: "teal-4",
           required: false,
+          cr_type: "pureValue",
+          cr_trigger: "123",
           cr_List: [
             {
-              name: "綽號",
+              name: "綽號第二層",
               type: "input",
               label: "綽號第二層",
               field: "fNickName",
               value: "",
               color: "teal-4",
               required: false,
+              cr_type: "pureValue",
+              cr_trigger: "123",
               cr_List: [
                 {
-                  name: "綽號",
+                  name: "綽號第三層",
                   type: "input",
                   label: "綽號第三層",
                   field: "fNickName",
                   value: "",
                   color: "teal-4",
                   required: false,
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
                   cr_List: [
                     {
-                      name: "綽號",
+                      name: "綽號第四層",
                       type: "input",
                       label: "綽號第四層",
                       field: "fNickName",
@@ -119,17 +125,11 @@ const formSettings = ref({
                       cr_type: "pureValue",
                       cr_trigger: "123"
                     },
-                  ],
-                  cr_type: "pureValue",
-                  cr_trigger: "123"
+                  ]
                 },
               ],
-              cr_type: "pureValue",
-              cr_trigger: "123"
             },
           ],
-          cr_type: "pureValue",
-          cr_trigger: "123"
         },
       ],
     },
@@ -379,18 +379,21 @@ function resetIndex (renderArr) {
 }
 function deleteCrListRecursion (objectInCrList) {
   // 條件判斷(CR)刪除深層Cr_List: 當父元素不符合條件時，遞迴將所有深層的cr元素刪除
-  for (const key in objectInCrList.cr_List) {
-    const childObj = objectInCrList.cr_List[key]
+  for (const childObj of objectInCrList.cr_List) {
+    if (!childObj.index && childObj.index !== 0) continue
     childObj.value = ""
     formSettings.value.render.splice(childObj.index, 1)
+    delete childObj.index
     resetIndex(formSettings.value.render)
-    if (Array.isArray(objectInCrList.cr_List) && childObj.cr_List.length) deleteCrListRecursion(childObj)
+    if (Array.isArray(childObj.cr_List) && childObj.cr_List.length) deleteCrListRecursion(childObj)
   }
 }
 function handlerDeleteRelativeElements (objectInCrList) {
-  resetIndex(formSettings.value.render)
   objectInCrList.value = ""
-  if (Array.isArray(objectInCrList.cr_List)) deleteCrListRecursion(objectInCrList)
+  delete objectInCrList.index
+  if (Array.isArray(objectInCrList.cr_List)) {
+    deleteCrListRecursion(objectInCrList)
+  }
 }
 function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   if (execute) {
@@ -399,6 +402,7 @@ function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   } else {
     if (formSettings.value.render[targetIndex] === objectInCrList) {
       formSettings.value.render.splice(targetIndex, 1)
+      resetIndex(formSettings.value.render)
       handlerDeleteRelativeElements(objectInCrList)
     }
   }
