@@ -205,26 +205,137 @@ const formSettings = ref({
     },
     {
       index: 2,
-      name: "過期日期",
+      name: "在職狀況",
       type: "radio",
-      label: "過期日期",
-      field: "fExpiredDate",
+      label: "在職狀況",
+      field: "fJobStatus",
       value: "",
       options: [
         {
-          label: "已過期",
+          label: "在職中",
           type: "inner_checkbox",
           value: "1",
         },
         {
-          label: "未過期",
+          label: "未在職",
           type: "inner_checkbox",
           value: "0",
         },
       ],
       required: false,
       originValue: "",
-      cr_List: []
+      cr_List: [
+        {
+          name: "就職公司名稱第一層",
+          type: "input",
+          label: "就職公司名稱第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: "",
+          cr_type: "pureValue",
+          cr_trigger: "1",
+          cr_List: [
+            {
+              name: "就職公司名稱第二層",
+              type: "input",
+              label: "就職公司名稱第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              originValue: "",
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "就職公司名稱第三層",
+                  type: "input",
+                  label: "就職公司名稱第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
+                  cr_List: [
+                    {
+                      name: "就職公司名稱第四層",
+                      type: "input",
+                      label: "就職公司名稱第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "上份工作最後上班日第一層",
+          type: "input",
+          label: "上份工作最後上班日第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: "",
+          cr_type: "pureValue",
+          cr_trigger: "0",
+          cr_List: [
+            {
+              name: "上份工作最後上班日第二層",
+              type: "input",
+              label: "上份工作最後上班日第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              originValue: "",
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "上份工作最後上班日第三層",
+                  type: "input",
+                  label: "上份工作最後上班日第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
+                  cr_List: [
+                    {
+                      name: "上份工作最後上班日第四層",
+                      type: "input",
+                      label: "上份工作最後上班日第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        }
+      ],
     },
     {
       index: 3,
@@ -233,11 +344,67 @@ const formSettings = ref({
       label: "重設密碼",
       field: "fResetPWD",
       value: "",
-      falsevalue: false,
-      truevalue: true,
+      falsevalue: "0",
+      truevalue: "1",
       required: false,
       originValue: "",
-      cr_List: []
+      cr_List: [
+        {
+          name: "新密碼第一層",
+          type: "input",
+          label: "新密碼第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: "",
+          cr_type: "pureValue",
+          cr_trigger: "1",
+          cr_List: [
+            {
+              name: "新密碼第二層",
+              type: "input",
+              label: "新密碼第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              originValue: "",
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "新密碼第三層",
+                  type: "input",
+                  label: "新密碼第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
+                  cr_List: [
+                    {
+                      name: "新密碼第四層",
+                      type: "input",
+                      label: "新密碼第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       index: 4,
@@ -277,9 +444,9 @@ const formSettings = ref({
       originValue: [],
       cr_List: [
         {
-          name: "綽號第一層",
+          name: "IT第一層",
           type: "input",
-          label: "綽號第一層",
+          label: "IT第一層",
           field: "fNickName",
           value: "",
           color: "teal-4",
@@ -289,10 +456,10 @@ const formSettings = ref({
           cr_trigger: ["IT"],
           cr_List: [
             {
-              name: "綽號第二層",
+              name: "IT第二層",
               type: "checkbox",
               field: "fnickname2",
-              label: "綽號第二層",
+              label: "IT第二層",
               value: [],
               options: [
                 {
@@ -314,9 +481,9 @@ const formSettings = ref({
               cr_trigger: "123",
               cr_List: [
                 {
-                  name: "綽號第三層",
+                  name: "IT第三層",
                   type: "input",
-                  label: "綽號第三層",
+                  label: "IT第三層",
                   field: "fNickName",
                   value: "",
                   color: "teal-4",
@@ -326,9 +493,9 @@ const formSettings = ref({
                   cr_trigger: ["HR"],
                   cr_List: [
                     {
-                      name: "綽號第四層",
+                      name: "IT第四層",
                       type: "input",
-                      label: "綽號第四層",
+                      label: "IT第四層",
                       field: "fNickName",
                       value: "",
                       color: "teal-4",
@@ -345,9 +512,9 @@ const formSettings = ref({
           ],
         },
         {
-          name: "FFF第一層",
+          name: "IT+MK第一層",
           type: "input",
-          label: "FFF第一層",
+          label: "IT+MK第一層",
           field: "fNickName",
           value: "",
           color: "teal-4",
@@ -357,9 +524,9 @@ const formSettings = ref({
           cr_trigger: ["IT", "MK"],
           cr_List: [
             {
-              name: "FFF第二層",
+              name: "IT+MK第二層",
               type: "input",
-              label: "FFF第二層",
+              label: "IT+MK第二層",
               field: "fNickName",
               value: "",
               color: "teal-4",
@@ -369,9 +536,9 @@ const formSettings = ref({
               cr_trigger: "123",
               cr_List: [
                 {
-                  name: "FFF第三層",
+                  name: "IT+MK第三層",
                   type: "input",
-                  label: "FFF第三層",
+                  label: "IT+MK第三層",
                   field: "fNickName",
                   value: "",
                   color: "teal-4",
@@ -381,9 +548,9 @@ const formSettings = ref({
                   cr_trigger: "123",
                   cr_List: [
                     {
-                      name: "FFF第四層",
+                      name: "IT+MK第四層",
                       type: "input",
-                      label: "FFF第四層",
+                      label: "IT+MK第四層",
                       field: "fNickName",
                       value: "",
                       color: "teal-4",
@@ -403,10 +570,10 @@ const formSettings = ref({
     },
     {
       index: 6,
-      name: "居住地",
+      name: "市",
       type: "select",
-      field: "fResidence",
-      label: "居住地",
+      field: "fCity",
+      label: "居住城市",
       value: "",
       options: [
         {
@@ -424,7 +591,34 @@ const formSettings = ref({
       ],
       required: false,
       originValue: "",
-      cr_List: []
+      cr_List: [
+        {
+          name: "區",
+          type: "select",
+          field: "fSection",
+          label: "行政區",
+          value: "",
+          options: [
+            {
+              label: "大安區",
+              value: "大安區",
+            },
+            {
+              label: "信義區",
+              value: "信義區",
+            },
+            {
+              label: "內湖區",
+              value: "內湖區",
+            },
+          ],
+          required: false,
+          originValue: "",
+          cr_type: "pureValue",
+          cr_trigger: "台北市",
+          cr_List: [],
+        },
+      ],
     },
     {
       index: 7,
