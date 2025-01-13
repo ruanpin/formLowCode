@@ -51,7 +51,7 @@
         :formObj="formObj"
       />
     </component>
-    <div class="row q-mt-sm" v-show="formObj.type">
+    <div class="row q-mt-sm" v-show="formObj.type && isButtonShow_ConditionalRenderMapping[formObj.type]">
       <q-btn unelevated color="orange-8" class="col" @click="dialog.ConditionalRenderSetting.isShow = true">
         <q-icon class="q-mr-xs" name="settings"></q-icon>條件渲染設定
       </q-btn>
@@ -80,6 +80,17 @@ const ComponentsMapping = {
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputExtends/Date/index.vue')),
+}
+const isButtonShow_ConditionalRenderMapping = {
+  input: true,
+  input_password: false,
+  input_date: true,
+  radio: true,
+  toggle: true,
+  textarea: false,
+  checkbox: true,
+  select: true,
+  uploadImg: false,
 }
 const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('./components/_ConditionalRenderSetting/index.vue'))
 

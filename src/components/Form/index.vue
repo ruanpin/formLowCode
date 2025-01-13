@@ -77,8 +77,8 @@ const formSettings = ref({
       label: "姓名",
       field: "fName",
       value: "",
-      color: "teal-4",
       required: false,
+      originValue: "",
       cr_List: [
         {
           name: "綽號第一層",
@@ -88,6 +88,7 @@ const formSettings = ref({
           value: "",
           color: "teal-4",
           required: false,
+          originValue: "",
           cr_type: "pureValue",
           cr_trigger: "123",
           cr_List: [
@@ -99,6 +100,7 @@ const formSettings = ref({
               value: "",
               color: "teal-4",
               required: false,
+              originValue: "",
               cr_type: "pureValue",
               cr_trigger: "123",
               cr_List: [
@@ -110,6 +112,7 @@ const formSettings = ref({
                   value: "",
                   color: "teal-4",
                   required: false,
+                  originValue: "",
                   cr_type: "pureValue",
                   cr_trigger: "123",
                   cr_List: [
@@ -121,6 +124,7 @@ const formSettings = ref({
                       value: "",
                       color: "teal-4",
                       required: false,
+                      originValue: "",
                       cr_List: [],
                       cr_type: "pureValue",
                       cr_trigger: "123"
@@ -131,6 +135,61 @@ const formSettings = ref({
             },
           ],
         },
+        {
+          name: "FFF第一層",
+          type: "input",
+          label: "FFF第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: "",
+          cr_type: "pureValue",
+          cr_trigger: "123",
+          cr_List: [
+            {
+              name: "FFF第二層",
+              type: "input",
+              label: "FFF第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              originValue: "",
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "FFF第三層",
+                  type: "input",
+                  label: "FFF第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
+                  cr_List: [
+                    {
+                      name: "FFF第四層",
+                      type: "input",
+                      label: "FFF第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -141,6 +200,8 @@ const formSettings = ref({
       field: "fIssueDate",
       value: "",
       required: false,
+      originValue: "",
+      cr_List: []
     },
     {
       index: 2,
@@ -148,7 +209,7 @@ const formSettings = ref({
       type: "radio",
       label: "過期日期",
       field: "fExpiredDate",
-      color: "teal-4",
+      value: "",
       options: [
         {
           label: "已過期",
@@ -162,6 +223,8 @@ const formSettings = ref({
         },
       ],
       required: false,
+      originValue: "",
+      cr_List: []
     },
     {
       index: 3,
@@ -173,6 +236,8 @@ const formSettings = ref({
       falsevalue: false,
       truevalue: true,
       required: false,
+      originValue: "",
+      cr_List: []
     },
     {
       index: 4,
@@ -184,6 +249,8 @@ const formSettings = ref({
       placeholder: "備註",
       limitWordsAmount: "500",
       required: false,
+      originValue: "",
+      cr_List: []
     },
     {
       index: 5,
@@ -207,6 +274,132 @@ const formSettings = ref({
         },
       ],
       required: false,
+      originValue: [],
+      cr_List: [
+        {
+          name: "綽號第一層",
+          type: "input",
+          label: "綽號第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: "",
+          cr_type: "multipleValuesInArray",
+          cr_trigger: ["IT"],
+          cr_List: [
+            {
+              name: "綽號第二層",
+              type: "checkbox",
+              field: "fnickname2",
+              label: "綽號第二層",
+              value: [],
+              options: [
+                {
+                  label: "人資部門",
+                  value: "HR",
+                },
+                {
+                  label: "資訊部門",
+                  value: "IT",
+                },
+                {
+                  label: "行銷部門",
+                  value: "MK",
+                },
+              ],
+              required: false,
+              originValue: [],
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "綽號第三層",
+                  type: "input",
+                  label: "綽號第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "multipleValuesInArray",
+                  cr_trigger: ["HR"],
+                  cr_List: [
+                    {
+                      name: "綽號第四層",
+                      type: "input",
+                      label: "綽號第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "FFF第一層",
+          type: "input",
+          label: "FFF第一層",
+          field: "fNickName",
+          value: "",
+          color: "teal-4",
+          required: false,
+          originValue: [],
+          cr_type: "multipleValuesInArray",
+          cr_trigger: ["IT", "MK"],
+          cr_List: [
+            {
+              name: "FFF第二層",
+              type: "input",
+              label: "FFF第二層",
+              field: "fNickName",
+              value: "",
+              color: "teal-4",
+              required: false,
+              originValue: "",
+              cr_type: "pureValue",
+              cr_trigger: "123",
+              cr_List: [
+                {
+                  name: "FFF第三層",
+                  type: "input",
+                  label: "FFF第三層",
+                  field: "fNickName",
+                  value: "",
+                  color: "teal-4",
+                  required: false,
+                  originValue: "",
+                  cr_type: "pureValue",
+                  cr_trigger: "123",
+                  cr_List: [
+                    {
+                      name: "FFF第四層",
+                      type: "input",
+                      label: "FFF第四層",
+                      field: "fNickName",
+                      value: "",
+                      color: "teal-4",
+                      required: false,
+                      originValue: "",
+                      cr_List: [],
+                      cr_type: "pureValue",
+                      cr_trigger: "123"
+                    },
+                  ]
+                },
+              ],
+            },
+          ],
+        }
+      ]
     },
     {
       index: 6,
@@ -230,6 +423,8 @@ const formSettings = ref({
         },
       ],
       required: false,
+      originValue: "",
+      cr_List: []
     },
     {
       index: 7,
@@ -239,71 +434,73 @@ const formSettings = ref({
       label: "上傳大頭貼",
       value: null,
       previewImgURL: "",
-      required: false
-    },
-    {
-      index: 8,
-      name: "多重輸入框",
-      type: "mutiInputsColumn",
-    },
-    {
-      index: 9,
-      type: "mutiSelectsColumn",
-      name: "語言程度",
-      label: "語言程度",
-      object: [
-        {
-          label: "英語",
-          field: "fEnglishLevel",
-          value: "",
-          options: [
-            { label: "精通", value: "精通" },
-            { label: "普通", value: "普通" },
-            { label: "略懂", value: "略懂" },
-          ],
-        },
-        {
-          label: "西語",
-          field: "fEspañolLevel",
-          value: "",
-          options: [
-            { label: "精通", value: "精通" },
-            { label: "普通", value: "普通" },
-            { label: "略懂", value: "略懂" },
-          ],
-        },
-        {
-          label: "德語",
-          field: "fGermanLevel",
-          value: "",
-          options: [
-            { label: "精通", value: "精通" },
-            { label: "普通", value: "普通" },
-            { label: "略懂", value: "略懂" },
-          ],
-        },
-      ],
       required: false,
+      originValue: null,
+      cr_List: []
     },
-    {
-      index: 10,
-      name: "日期起訖",
-      type: "dateRange",
-      label: "日期起訖",
-      object: [
-        {
-          label: "輸入起始日期",
-          field: "f起始日期",
-          value: ""
-        },
-        {
-          label: "輸入結束日期",
-          field: "f結束日期",
-          value: ""
-        }
-      ],
-      required: false
-    },
+    // {
+    //   index: 8,
+    //   name: "多重輸入框",
+    //   type: "mutiInputsColumn",
+    // },
+    // {
+    //   index: 9,
+    //   type: "mutiSelectsColumn",
+    //   name: "語言程度",
+    //   label: "語言程度",
+    //   object: [
+    //     {
+    //       label: "英語",
+    //       field: "fEnglishLevel",
+    //       value: "",
+    //       options: [
+    //         { label: "精通", value: "精通" },
+    //         { label: "普通", value: "普通" },
+    //         { label: "略懂", value: "略懂" },
+    //       ],
+    //     },
+    //     {
+    //       label: "西語",
+    //       field: "fEspañolLevel",
+    //       value: "",
+    //       options: [
+    //         { label: "精通", value: "精通" },
+    //         { label: "普通", value: "普通" },
+    //         { label: "略懂", value: "略懂" },
+    //       ],
+    //     },
+    //     {
+    //       label: "德語",
+    //       field: "fGermanLevel",
+    //       value: "",
+    //       options: [
+    //         { label: "精通", value: "精通" },
+    //         { label: "普通", value: "普通" },
+    //         { label: "略懂", value: "略懂" },
+    //       ],
+    //     },
+    //   ],
+    //   required: false,
+    // },
+    // {
+    //   index: 10,
+    //   name: "日期起訖",
+    //   type: "dateRange",
+    //   label: "日期起訖",
+    //   object: [
+    //     {
+    //       label: "輸入起始日期",
+    //       field: "f起始日期",
+    //       value: ""
+    //     },
+    //     {
+    //       label: "輸入結束日期",
+    //       field: "f結束日期",
+    //       value: ""
+    //     }
+    //   ],
+    //   required: false
+    // },
     // {
     //   name: "創建時間",
     //   type: "checkbox",
@@ -372,16 +569,24 @@ watch(() => storeJSONSharing.JSON_form, (newValue) => {
   formSettings.value = newValue
 })
 
+function resetValue (elementObject) {
+  if (typeof elementObject.value === 'object' && elementObject.value !== null) {
+    elementObject.value = JSON.parse(JSON.stringify(elementObject.originValue))
+  } else {
+    elementObject.value = elementObject.originValue
+  }
+}
 function resetIndex (renderArr) {
   renderArr.forEach((e, i) => {
     e.index = i
   })
 }
 function deleteCrListRecursion (objectInCrList) {
-  // 條件判斷(CR)刪除深層Cr_List: 當父元素不符合條件時，遞迴將所有深層的cr元素刪除
+  // 條件判斷(CR)刪除深層Cr_List: 當父元素的值不符合自身CR(conditional rendering)條件時，遞迴將所有深層的CR(conditional rendering)元素刪除
   for (const childObj of objectInCrList.cr_List) {
     if (!childObj.index && childObj.index !== 0) continue
-    childObj.value = ""
+    resetValue(childObj)
+    // childObj.value = ""
     formSettings.value.render.splice(childObj.index, 1)
     delete childObj.index
     resetIndex(formSettings.value.render)
@@ -389,7 +594,8 @@ function deleteCrListRecursion (objectInCrList) {
   }
 }
 function handlerDeleteRelativeElements (objectInCrList) {
-  objectInCrList.value = ""
+  resetValue(objectInCrList)
+  // objectInCrList.value = ""
   delete objectInCrList.index
   if (Array.isArray(objectInCrList.cr_List)) {
     deleteCrListRecursion(objectInCrList)
@@ -397,6 +603,7 @@ function handlerDeleteRelativeElements (objectInCrList) {
 }
 function updateCrObjectToRenderList ({ execute, targetIndex, objectInCrList }) {
   if (execute) {
+    if (objectInCrList.index) return // 若檢測到index有值表已經放到頁面上(在render Array裡)了: 針對cr_type為multipleValuesInArray設定(如checkbox)
     formSettings.value.render.splice(targetIndex, 0, objectInCrList)
     resetIndex(formSettings.value.render)
   } else {

@@ -29,17 +29,13 @@ const props = defineProps({
   renderObject: {
     type: Object,
     required: true
-  },
-  formSettingsRenderList: {
-    type: Array,
   }
 })
 const emits = defineEmits(['updateCrObjectToRenderList'])
-const reversedCRList = props.renderObject.cr_List.reverse()
 
 function updateHandler (newValue) {
   updateCrObjectToRenderList ({
-    reversedCRList,
+    CRList: props.renderObject.cr_List,
     renderObject: props.renderObject,
     emits,
     newValue
