@@ -1,3 +1,24 @@
+const RenderingTypesOptions = {
+  inputRenderingTypes: [
+    { label: '純值相等', value: 'pureValue' },
+  ],
+  checkboxRenderingTypes: [
+    { label: '選項包含', value: 'multipleValuesInArray' },
+  ]
+}
+
+export const formElementsAndRenderingTypesMapping = {
+  input: RenderingTypesOptions.inputRenderingTypes,
+  // input_password: false,
+  // input_date: true,
+  radio: RenderingTypesOptions.inputRenderingTypes,
+  toggle: RenderingTypesOptions.inputRenderingTypes,
+  // textarea: false,
+  checkbox: RenderingTypesOptions.checkboxRenderingTypes,
+  select: RenderingTypesOptions.inputRenderingTypes,
+  // uploadImg: false,
+}
+
 const compareTypeMapping = {
   pureValue: ({ cr_trigger, newValue }) => {
     return cr_trigger === newValue

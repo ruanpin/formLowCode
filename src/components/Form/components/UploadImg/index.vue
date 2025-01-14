@@ -41,16 +41,19 @@
           </q-btn>
         </div>
       </q-img>
-      <q-avatar
-        v-else
-        rounded
-        color="grey-5"
-        text-color="white"
-        icon="add"
-        size="120px"
-        class="cursor-pointer"
-        @click="uploadImgFromImgContainer()"
-      />
+      <div v-else class="row">
+        <div class="avatarContainer">
+          <q-avatar
+            rounded
+            color="transparent"
+            text-color="white"
+            icon="add"
+            size="120px"
+            class="cursor-pointer"
+            @click="uploadImgFromImgContainer()"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -95,5 +98,11 @@ function clearImgFile() {
       padding: 0 !important;
       border-radius: 5px;
     }
+  }
+  .avatarContainer {
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgba(255, 255, 255, .5);
+    border-radius: 4px;
   }
 </style>

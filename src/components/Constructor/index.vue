@@ -17,11 +17,11 @@
       <div class="q-mb-md" v-for="(formObj, index) in formSettings.render" :key="index">
         <q-avatar font-size="14px" size="sm" color="blue-9" text-color="white">{{ index + 1 }}</q-avatar>
         <div class="syncShowObject">current object: {{ formObj }}</div>
+        <!-- :formSettings="formSettings" -->
         <TypeOptionsComponent
           :constructorList="constructorList"
           :formObj="formObj"
           :formIndex="index"
-          :formSettings="formSettings"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
       </div>
