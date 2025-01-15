@@ -8,20 +8,32 @@
       dense
       :false-value="renderObject.falsevalue"
       :true-value="renderObject.truevalue"
+      @update:model-value="value => { updateHandler(value) }"
     />
   </div>
 </template>
 
 <script setup>
+import { updateCrObjectToRenderList } from 'src/utils/ConditionalRender.js'
 defineOptions({
   name: 'ToggleComponent'
 })
-defineProps({
+const props = defineProps({
   renderObject: {
     type: Object,
     required: true
   }
 })
+const emits = defineEmits(['updateCrObjectToRenderList'])
+
+function updateHandler (newValue) {
+  updateCrObjectToRenderList ({
+    CRList: props.renderObject.cr_List,
+    renderObject: props.renderObject,
+    emits,
+    newValue
+  })
+}
 </script>
 
 <style lang="scss" scoped>

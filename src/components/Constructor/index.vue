@@ -17,13 +17,13 @@
       <div class="q-mb-md" v-for="(formObj, index) in formSettings.render" :key="index">
         <q-avatar font-size="14px" size="sm" color="blue-9" text-color="white">{{ index + 1 }}</q-avatar>
         <div class="syncShowObject">current object: {{ formObj }}</div>
+        <!-- :formSettings="formSettings" -->
         <TypeOptionsComponent
           :constructorList="constructorList"
           :formObj="formObj"
           :formIndex="index"
           @update:formObj="updateFormObj"
         ></TypeOptionsComponent>
-        <!-- <div class="separator"></div> -->
       </div>
       <div class="flex-re q-mb-md">
         <div class="flex-ac q-gutter-md">
@@ -36,7 +36,10 @@
         </div>
       </div>
       <div class="flex">
-        <q-btn unelevated color="primary" class="col" @click="dialog.JSONStringResult.isShow = true">
+        <q-btn unelevated color="primary" class="col" @click="() => {
+          dialog.JSONStringResult.isShow = true;
+          resetIndex(formSettings.render);
+        }">
           <q-icon name="send"></q-icon>
         </q-btn>
       </div>
@@ -60,11 +63,11 @@ import {
   UploadImg,
 } from 'src/formElementConstructors/Construsctors.js'
 
-import Popup_JSONString from 'components/Popup_JSONString.vue'
 import Bar from 'components/Bar.vue'
 
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
 import HTTPRequsetSettingsComponent from './components/HTTPRequsetSettings/index.vue'
+import Popup_JSONString from './components/Popup_JSONString/index.vue'
 
 defineOptions({
   name: 'ConstructorComponent'
@@ -132,6 +135,11 @@ function updateElement (operate, target) {
 }
 function updateAPISettings ({ key, value }) {
   formSettings.value.submit_APISettings[key] = value
+}
+function resetIndex (renderArr) {
+  renderArr.forEach((e, i) => {
+    e.index = i
+  })
 }
 </script>
 

@@ -18,6 +18,8 @@ class BasicInput {
     this.field = "";
     this.value = "";
     this.required = false;
+    this.originValue = ""
+    this.cr_List = []
   }
 }
 
@@ -58,6 +60,8 @@ class BasicRadio {
     this.value = "";
     this.options = [{ label: "", value: "" }];
     this.required = false;
+    this.originValue = ""
+    this.cr_List = []
   }
 }
 
@@ -77,6 +81,8 @@ class BasicToggle {
     this.truevalue = "";
     this.falsevalue = "";
     this.required = false;
+    this.originValue = ""
+    this.cr_List = []
   }
 }
 
@@ -95,6 +101,8 @@ class BasicCheckbox {
     this.value = [];
     this.options = [{ label: "", value: "" }];
     this.required = false;
+    this.originValue = []
+    this.cr_List = []
   }
 }
 
@@ -113,6 +121,8 @@ class BasicSelect {
     this.value = "";
     this.options = [{ label: "", value: "" }];
     this.required = false;
+    this.originValue = ""
+    this.cr_List = []
   }
 }
 
@@ -131,6 +141,8 @@ class BasicUploadImg {
     this.value = null; // 空字串q-file元件會報警告，因此這裡使用null
     this.previewImgURL = "";
     this.required = false;
+    this.originValue = null
+    this.cr_List = []
   }
 }
 

@@ -9,6 +9,7 @@
         style="height: 20px; transform: translateX(-10px)"
         v-model="renderObject.value"
         :val="item.value"
+        @update:model-value="value => { updateHandler(value) }"
       >
           <span class="checkboxLabel">{{ item.label }}</span>
       </q-checkbox>
@@ -17,15 +18,26 @@
 </template>
 
 <script setup>
+import { updateCrObjectToRenderList } from 'src/utils/ConditionalRender.js'
 defineOptions({
   name: 'CheckboxComponent'
 })
-defineProps({
+const props = defineProps({
   renderObject: {
     type: Object,
     required: true
   }
 })
+const emits = defineEmits(['updateCrObjectToRenderList'])
+
+function updateHandler (newValue) {
+  updateCrObjectToRenderList ({
+    CRList: props.renderObject.cr_List,
+    renderObject: props.renderObject,
+    emits,
+    newValue
+  })
+}
 </script>
 
 <style lang="scss" scoped>
