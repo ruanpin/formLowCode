@@ -1,1 +1,0 @@
-import{a6 as e,at as t}from"./index.c364fea8.js";const u=Object.assign({name:"MutiInputsColumnComponent"},{__name:"index",props:{renderObject:{type:Object,required:!0}},setup(n){return(o,r)=>(e(),t("div",null," MutiInputsColumnComponent "))}});export{u as default};
