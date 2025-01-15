@@ -26,6 +26,7 @@
       <component
         :is="cr_triggerMapping[formObj.cr_type]"
         :formObj="formObj"
+        :formObjOfFather="formObjOfFather"
       />
     </div>
   </div>
@@ -49,6 +50,6 @@ const props = defineProps({
 })
 const cr_triggerMapping = {
   pureValue: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
-  multipleValuesInArray: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
+  multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
 }
 </script>

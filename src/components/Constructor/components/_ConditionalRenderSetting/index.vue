@@ -11,6 +11,25 @@
       <q-card-section class="q-pt-none q-pb-none">
         <div class="q-mb-sm">
           <div class="q-mb-md">
+            <div class="f700 fz17">父元素</div>
+            <div class="text-grey-8"><span class="f700 text-black">Type: </span>{{ formObjOfFather.type }}</div>
+            <div class="text-grey-8"><span class="f700 text-black">Name: </span>{{ formObjOfFather.name || '未設定' }}</div>
+            <div class="text-grey-8"><span class="f700 text-black">Label: </span>{{ formObjOfFather.field || '未設定' }}</div>
+            <div class="text-grey-8"><span class="f700 text-black">Field: </span>{{ formObjOfFather.label || '未設定' }}</div>
+            <div class="text-grey-8" v-if="formObjOfFather.hasOwnProperty('options')">
+              <span class="f700 text-black">Options: </span>
+              <span v-for="(item, index) in formObjOfFather.options" :key="index">
+                {{ item }},
+              </span>
+            </div>
+            <div class="text-grey-8" v-show="formObjOfFather.hasOwnProperty('truevalue')">
+              <span class="f700 text-black">True value: </span>{{ formObjOfFather.truevalue || '未設定' }}
+            </div>
+            <div class="text-grey-8" v-show="formObjOfFather.hasOwnProperty('falsevalue')">
+              <span class="f700 text-black">False value: </span>{{ formObjOfFather.falsevalue || '未設定' }}
+            </div>
+          </div>
+          <div class="q-mb-md">
             <div class="f700 fz17">選擇條件渲染元素</div>
             <div class="text-grey-8">這裡選擇的元素會依據條件是否與<span class="f700 text-black">父元素的值</span>匹配來決定是否出現在畫面中</div>
           </div>
@@ -66,7 +85,7 @@
 
       <div class="row q-pa-md">
         <div class="col row">
-          <q-btn class="col" unelevated outline color="primary" @click="handlerComfirm">
+          <q-btn class="col" unelevated outline color="primary" @click="dialog.ConditionalRenderSetting.isShow = false">
             close
           </q-btn>
         </div>
@@ -78,17 +97,17 @@
 <script setup>
 import { ref, watch, inject, computed } from 'vue'
 import {
-  Separator,
-  Input,
-  Input_password,
-  Input_date,
-  Radio,
-  Toggle,
-  Textarea,
-  Checkbox,
-  Select,
-  UploadImg,
-} from 'src/formElementConstructors/Construsctors.js'
+  Separator_CR,
+  Input_CR,
+  Input_password_CR,
+  Input_date_CR,
+  Radio_CR,
+  Toggle_CR,
+  Textarea_CR,
+  Checkbox_CR,
+  Select_CR,
+  UploadImg_CR,
+} from 'src/formElementConstructors/_CRConstructors.js'
 import Bar from 'components/Bar.vue'
 
 import TypeOptionsComponent from './components/TypeOptions/index.vue'
@@ -117,24 +136,31 @@ const constructorList = ref([
   { label: 'uploadImg-上傳照片', value: 'uploadImg' },
 ])
 const classMapping = {
-  separator: Separator,
-  input: Input,
-  input_password: Input_password,
-  input_date: Input_date,
-  radio: Radio,
-  toggle: Toggle,
-  textarea: Textarea,
-  checkbox: Checkbox,
-  select: Select,
-  uploadImg: UploadImg
+  separator: Separator_CR,
+  input: Input_CR,
+  input_password: Input_password_CR,
+  input_date: Input_date_CR,
+  radio: Radio_CR,
+  toggle: Toggle_CR,
+  textarea: Textarea_CR,
+  checkbox: Checkbox_CR,
+  select: Select_CR,
+  uploadImg: UploadImg_CR
 }
 
 function updateFormObj ({ formIndex, value }) {
   try {
     if (!classMapping.hasOwnProperty(value))
       throw new Error('there is no such class you chose in mapping object, please check again.')
-    props.formObjOfFather.cr_List[formIndex] = new classMapping[value]({})
-  } catch {
+    const params = {}
+    if (props.formObjOfFather.type === 'checkbox') {
+      params.cr_trigger = []
+    } else {
+      params.cr_trigger = ""
+    }
+    props.formObjOfFather.cr_List[formIndex] = new classMapping[value](params)
+  } catch(e) {
+    console.log(e);
     props.formObjOfFather.cr_List[formIndex] = Object.assign({}, { type: value })
   }
 }
