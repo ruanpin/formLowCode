@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          低代碼表單元件開發工具 Low-code Form Component Development Tool
+          前端低代碼表單元件開發工具 Low-code Form Component Development Tool
         </q-toolbar-title>
 
         <div>Vue 3 / Quasar / Pinia / Vite</div>

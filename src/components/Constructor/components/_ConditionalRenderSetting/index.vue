@@ -14,8 +14,8 @@
             <div class="f700 fz17">父元素</div>
             <div class="text-grey-8"><span class="f700 text-black">Type: </span>{{ formObjOfFather.type }}</div>
             <div class="text-grey-8"><span class="f700 text-black">Name: </span>{{ formObjOfFather.name || '未設定' }}</div>
-            <div class="text-grey-8"><span class="f700 text-black">Label: </span>{{ formObjOfFather.field || '未設定' }}</div>
-            <div class="text-grey-8"><span class="f700 text-black">Field: </span>{{ formObjOfFather.label || '未設定' }}</div>
+            <div class="text-grey-8"><span class="f700 text-black">Label: </span>{{ formObjOfFather.label || '未設定' }}</div>
+            <div class="text-grey-8"><span class="f700 text-black">Field: </span>{{ formObjOfFather.field || '未設定' }}</div>
             <div class="text-grey-8" v-if="formObjOfFather.hasOwnProperty('options')">
               <span class="f700 text-black">Options: </span>
               <span v-for="(item, index) in formObjOfFather.options" :key="index">
@@ -55,31 +55,6 @@
               </q-btn>
             </div>
           </div>
-          <!-- <q-scroll-area style="height: 120px; max-width: 100%;">
-            <div class="flex-ac warp q-pt-md">
-              <div
-                class="elementBox"
-                :class="{
-                  selectedShadow: selectedElement.index === index,
-                  forbiddenItself: item === formObj
-                }"
-                v-for="(item, index) in selectableRenderList"
-                :key="index"
-                @click="handlerSelecting(item === formObj, index)"
-              >
-                <q-btn unelevated color="light-green-7" size="xs" round class="checked" v-show="selectedElement.index === index">
-                  <q-icon name="check" size="sm"></q-icon>
-                </q-btn>
-                <div class="q-ml-md q-mr-sm">
-                  <q-avatar font-size="14px" size="md" :color="item !== formObj ? 'blue-9' : 'grey-6'" text-color="white" class="f700">{{ index + 1 }}</q-avatar>
-                </div>
-                <div class="ellipsis q-pr-md">
-                  <div class="f700 ellipsis">{{ item.name }}</div>
-                  <div class="text-grey-8 ellipsis">{{ item.type }}</div>
-                </div>
-              </div>
-            </div>
-          </q-scroll-area> -->
         </div>
       </q-card-section>
 
@@ -95,7 +70,7 @@
 </template>
 
 <script setup>
-import { ref, watch, inject, computed } from 'vue'
+import { ref } from 'vue'
 import {
   Separator_CR,
   Input_CR,
@@ -152,11 +127,11 @@ function updateFormObj ({ formIndex, value }) {
   try {
     if (!classMapping.hasOwnProperty(value))
       throw new Error('there is no such class you chose in mapping object, please check again.')
-    const params = {}
+    const params = {
+      cr_trigger: "" // default
+    }
     if (props.formObjOfFather.type === 'checkbox') {
       params.cr_trigger = []
-    } else {
-      params.cr_trigger = ""
     }
     props.formObjOfFather.cr_List[formIndex] = new classMapping[value](params)
   } catch(e) {

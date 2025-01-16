@@ -1,6 +1,6 @@
 const RenderingTypesOptions = {
   inputRenderingTypes: [
-    { label: '純值相等', value: 'pureValue' },
+    { label: '純值', value: 'pureValue' },
   ],
   checkboxRenderingTypes: [
     { label: '選項包含', value: 'multipleValuesInArray' },
@@ -19,9 +19,33 @@ export const formElementsAndRenderingTypesMapping = {
   // uploadImg: false,
 }
 
+export const cr_operationTypeMapping = {
+  input: [
+    { label: '相等', value: 'equl' },
+  ],
+  radio: [
+    { label: '相等', value: 'equl' },
+  ],
+  toggle: [
+    { label: '相等', value: 'equl' },
+  ],
+  select: [
+    { label: '相等', value: 'equl' },
+  ]
+}
+
+function equl ({ cr_trigger, newValue }) {
+  return cr_trigger === newValue
+}
+
 const compareTypeMapping = {
-  pureValue: ({ cr_trigger, newValue }) => {
-    return cr_trigger === newValue
+  pureValue: ({ cr_trigger, cr_operation, newValue }) => {
+    switch(cr_operation) {
+      case 'equl':
+        return equl({ cr_trigger, newValue });
+
+    }
+
   },
   multipleValuesInArray: ({ cr_trigger, newValue }) => {
     if (!Array.isArray(cr_trigger) || !Array.isArray(newValue) || !cr_trigger.length || !newValue.length) {
@@ -34,7 +58,8 @@ const compareTypeMapping = {
 function determineIfRenderingConditionsAreMet ({ objectInCrList, newValue }) {
   return compareTypeMapping[objectInCrList.cr_type]?.({
     cr_trigger: objectInCrList.cr_trigger,
-    newValue
+    cr_operation: objectInCrList.cr_operation,
+    newValue,
   })
 }
 
