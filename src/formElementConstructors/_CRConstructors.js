@@ -16,6 +16,7 @@ export class Separator_CR extends Separator {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Input_CR extends Input {
@@ -23,6 +24,7 @@ export class Input_CR extends Input {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Input_password_CR extends Input_password {
@@ -30,6 +32,7 @@ export class Input_password_CR extends Input_password {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Input_date_CR extends Input_date {
@@ -37,6 +40,7 @@ export class Input_date_CR extends Input_date {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Textarea_CR extends Textarea {
@@ -44,6 +48,7 @@ export class Textarea_CR extends Textarea {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Radio_CR extends Radio {
@@ -51,6 +56,7 @@ export class Radio_CR extends Radio {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Toggle_CR extends Toggle {
@@ -58,6 +64,7 @@ export class Toggle_CR extends Toggle {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Checkbox_CR extends Checkbox {
@@ -65,6 +72,7 @@ export class Checkbox_CR extends Checkbox {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class Select_CR extends Select {
@@ -72,6 +80,7 @@ export class Select_CR extends Select {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
 export class UploadImg_CR extends UploadImg {
@@ -79,5 +88,6 @@ export class UploadImg_CR extends UploadImg {
     super();
     this.cr_type = ""
     this.cr_trigger = cr_trigger
+    this.cr_operation = ""
   }
 }
