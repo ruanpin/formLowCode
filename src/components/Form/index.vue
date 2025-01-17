@@ -100,7 +100,21 @@ const formSettings = ref({
       value: "",
       required: true,
       originValue: "",
-      cr_List: [],
+      cr_List: [
+        {
+          name: "未滿20歲需提供法定代理人姓名",
+          label: "未滿20歲需提供法定代理人姓名",
+          field: "under20Representative",
+          value: "",
+          required: true,
+          originValue: "",
+          cr_List: [],
+          type: "input",
+          cr_type: "age",
+          cr_trigger: 19,
+          cr_operation: "lessThanOrEqual"
+        }
+      ],
       type: "input_date",
       index: 2
     },
@@ -133,7 +147,7 @@ const formSettings = ref({
           type: "input",
           cr_type: "pureValue",
           cr_trigger: "citizen",
-          cr_operation: "equl"
+          cr_operation: "equalTo"
         },
         {
           name: "護照號碼",
@@ -146,7 +160,7 @@ const formSettings = ref({
           type: "input",
           cr_type: "pureValue",
           cr_trigger: "expat",
-          cr_operation: "equl"
+          cr_operation: "equalTo"
         }
       ],
       type: "radio",
@@ -173,7 +187,7 @@ const formSettings = ref({
           type: "input",
           cr_type: "pureValue",
           cr_trigger: "1",
-          cr_operation: "equl"
+          cr_operation: "equalTo"
         }
       ],
       type: "toggle",

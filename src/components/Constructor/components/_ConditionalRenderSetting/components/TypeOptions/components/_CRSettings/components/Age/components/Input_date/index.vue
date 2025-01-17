@@ -11,7 +11,7 @@
     />
   </div>
   <div>
-    <div class="options-title">條件渲染觸發值(cr_trigger)</div>
+    <div class="options-title">條件渲染觸發值（歲）(cr_trigger)</div>
     <q-input class="" dense rounded outlined v-model.number="formObj.cr_trigger" type="number"></q-input>
   </div>
 </template>
