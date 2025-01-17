@@ -46,7 +46,7 @@ const props = defineProps({
 const alert = inject('alert')
 
 function handlerSelecting (item) {
-  if (!item.value && item.value !== 0) return alert.warning('此選項未設置value值，建議回父元件重新設置')
+  if (!item.value && item.value !== 0) return alert.warning('此選項未設置value值，建議回父元素重新設置')
   const index = props.formObj.cr_trigger.indexOf(item.value);
   if (index === -1) {
     props.formObj.cr_trigger.push(item.value);

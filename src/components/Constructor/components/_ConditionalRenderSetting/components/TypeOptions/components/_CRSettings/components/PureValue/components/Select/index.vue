@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-// import { computed } from 'vue'
+import { inject } from 'vue'
 import OptionsSingleSelection from 'src/components/OptionsSingleSelection.vue'
 defineOptions({
   name: 'PureValueSelectComponent'
@@ -40,14 +40,9 @@ const props = defineProps({
     default: () => []
   }
 })
-// const SelectSepcialOptions = computed(() => {
-//   return [
-//     { label: 'False值', value: props.formObjOfFather.falsevalue },
-//     { label: 'True值', value: props.formObjOfFather.truevalue },
-//   ]
-// })
+const alert = inject('alert')
 function updateSelecting (item) {
-  if (!item.value && item.value !== 0) return alert.warning('此選項未設置value值，建議回父元件重新設置')
+  if (!item.value && item.value !== 0) return alert.warning('此選項未設置value值，建議回父元素重新設置')
   props.formObj.cr_trigger = item.value;
 }
 
