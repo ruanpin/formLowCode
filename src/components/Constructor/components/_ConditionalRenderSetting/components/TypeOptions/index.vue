@@ -92,7 +92,7 @@ const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('../../i
 const isButtonShow_ConditionalRenderMapping = {
   input: true,
   input_password: false,
-  input_date: false,
+  input_date: true,
   radio: true,
   toggle: true,
   textarea: false,

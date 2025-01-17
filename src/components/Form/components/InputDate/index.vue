@@ -42,13 +42,12 @@ const props = defineProps({
 const emits = defineEmits(['updateCrObjectToRenderList'])
 
 function updateHandler (newValue) {
-  console.log(newValue);
-  // updateCrObjectToRenderList ({
-  //   CRList: props.renderObject.cr_List,
-  //   renderObject: props.renderObject,
-  //   emits,
-  //   newValue
-  // })
+  updateCrObjectToRenderList ({
+    CRList: props.renderObject.cr_List,
+    renderObject: props.renderObject,
+    emits,
+    newValue
+  })
 }
 </script>
 
