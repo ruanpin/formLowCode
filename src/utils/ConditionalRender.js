@@ -1,3 +1,14 @@
+function calculateAgeNow(birthDateString) {
+  const birthDate = new Date(birthDateString).getTime()
+  const today = new Date().getTime()
+
+  const ageInMilliseconds = today - birthDate
+  const millisecondsInYear = 1000 * 60 * 60 * 24 * 365;
+
+  let age = ageInMilliseconds / millisecondsInYear;
+  return Math.floor(age)
+}
+
 const RenderingTypesOptions = {
   inputRenderingTypes: [
     { label: '純值', value: 'pureValue' },
@@ -21,37 +32,73 @@ export const formElementsAndRenderingTypesMapping = {
 
 export const cr_operationTypeMapping = {
   input: [
-    { label: '相等', value: 'equl' },
+    { label: '相等', value: 'equalTo' },
   ],
   radio: [
-    { label: '相等', value: 'equl' },
+    { label: '相等', value: 'equalTo' },
   ],
   toggle: [
-    { label: '相等', value: 'equl' },
+    { label: '相等', value: 'equalTo' },
   ],
   select: [
-    { label: '相等', value: 'equl' },
+    { label: '相等', value: 'equalTo' },
   ]
 }
 
-function equl ({ cr_trigger, newValue }) {
+function equalTo ({ cr_trigger, newValue }) {
   return cr_trigger === newValue
+}
+function anyInput ({ newValue }) {
+  return !!newValue
+}
+function greaterThanOrEqualTo ({ cr_trigger, newValue }) {
+  const cr_trigger_num = Number(cr_trigger)
+  const newValue_num = Number(newValue)
+  return newValue_num >= cr_trigger_num
+}
+function lessThanOrEqual ({ cr_trigger, newValue }) {
+  const cr_trigger_num = Number(cr_trigger)
+  const newValue_num = Number(newValue)
+  return newValue_num <= cr_trigger_num
+}
+function withinTheRange ({ cr_trigger = {}, newValue }) {
+  if (typeof cr_trigger !== 'object' || !cr_trigger.min || !cr_trigger.max) return false
+  const min_num = Number(cr_trigger.min)
+  const max_num = Number(cr_trigger.max)
+  return newValue >= min_num && newValue <= max_num
 }
 
 const compareTypeMapping = {
   pureValue: ({ cr_trigger, cr_operation, newValue }) => {
     switch(cr_operation) {
-      case 'equl':
-        return equl({ cr_trigger, newValue });
-
+      case 'equalTo':
+        return equalTo({ cr_trigger, newValue });
+      case 'anyInput':
+        return anyInput({ newValue });
+      case 'greaterThanOrEqualTo':
+        return greaterThanOrEqualTo({ cr_trigger, newValue });
+      case 'lessThanOrEqual':
+        return lessThanOrEqual({ cr_trigger, newValue });
+      case 'withinTheRange':
+        return withinTheRange({ cr_trigger, newValue })
     }
-
   },
   multipleValuesInArray: ({ cr_trigger, newValue }) => {
     if (!Array.isArray(cr_trigger) || !Array.isArray(newValue) || !cr_trigger.length || !newValue.length) {
       return false
     }
     return cr_trigger.every(value => newValue.includes(value))
+  },
+  age: ({ cr_trigger, cr_operation, newValue }) => {
+    const newValueToAge = calculateAgeNow(newValue)
+    switch(cr_operation) {
+      case 'equalTo':
+        return equalTo({ cr_trigger, newValue: newValueToAge });
+      case 'greaterThanOrEqualTo':
+        return greaterThanOrEqualTo({ cr_trigger, newValue: newValueToAge });
+      case 'lessThanOrEqual':
+        return lessThanOrEqual({ cr_trigger, newValue: newValueToAge });
+    }
   },
 }
 
