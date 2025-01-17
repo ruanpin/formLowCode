@@ -51,5 +51,6 @@ const props = defineProps({
 const cr_triggerMapping = {
   pureValue: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
   multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
+  age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
 }
 </script>
