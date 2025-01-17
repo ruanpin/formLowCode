@@ -71,691 +71,285 @@ const loading = ref({
 const formSettings = ref({
   render: [
     {
-      index: 0,
       name: "姓名",
-      type: "input",
       label: "姓名",
       field: "fName",
       value: "",
-      required: false,
+      required: true,
       originValue: "",
-      cr_List: [
-        {
-          name: "綽號第一層",
-          type: "input",
-          label: "綽號第一層",
-          field: "fNickName",
-          value: "",
-          color: "teal-4",
-          required: false,
-          originValue: "",
-          cr_type: "pureValue",
-          cr_trigger: "123",
-          cr_List: [
-            {
-              name: "綽號第二層",
-              type: "input",
-              label: "綽號第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "綽號第三層",
-                  type: "input",
-                  label: "綽號第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "綽號第四層",
-                      type: "input",
-                      label: "綽號第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "FFF第一層",
-          type: "input",
-          label: "FFF第一層",
-          field: "fNickName",
-          value: "",
-          color: "teal-4",
-          required: false,
-          originValue: "",
-          cr_type: "pureValue",
-          cr_trigger: "123",
-          cr_List: [
-            {
-              name: "FFF第二層",
-              type: "input",
-              label: "FFF第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "FFF第三層",
-                  type: "input",
-                  label: "FFF第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "FFF第四層",
-                      type: "input",
-                      label: "FFF第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
-          ],
-        }
-      ],
+      cr_List: [],
+      type: "input",
+      index: 0
     },
     {
-      index: 1,
-      name: "生效日期",
-      type: "input_date",
-      label: "生效日期",
-      field: "fIssueDate",
+      name: "密碼",
+      label: "密碼",
+      field: "fPWD",
       value: "",
-      required: false,
+      required: true,
       originValue: "",
-      cr_List: []
+      cr_List: [],
+      type: "input_password",
+      limitWordsAmount: "",
+      index: 1
     },
     {
-      index: 2,
-      name: "在職狀況",
-      type: "radio",
-      label: "在職狀況",
-      field: "fJobStatus",
+      name: "生日",
+      label: "生日",
+      field: "fBirthday",
+      value: "",
+      required: true,
+      originValue: "",
+      cr_List: [],
+      type: "input_date",
+      index: 2
+    },
+    {
+      name: "身份",
+      label: "身份",
+      field: "citizen",
       value: "",
       options: [
         {
-          label: "在職中",
-          type: "inner_checkbox",
-          value: "1",
+          label: "本國公民",
+          value: "citizen"
         },
         {
-          label: "未在職",
-          type: "inner_checkbox",
-          value: "0",
-        },
-      ],
-      required: false,
-      originValue: "",
-      cr_List: [
-        {
-          name: "就職公司名稱第一層",
-          type: "input",
-          label: "就職公司名稱第一層",
-          field: "fNickName",
-          value: "",
-          color: "teal-4",
-          required: false,
-          originValue: "",
-          cr_type: "pureValue",
-          cr_trigger: "1",
-          cr_List: [
-            {
-              name: "就職公司名稱第二層",
-              type: "input",
-              label: "就職公司名稱第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "就職公司名稱第三層",
-                  type: "input",
-                  label: "就職公司名稱第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "就職公司名稱第四層",
-                      type: "input",
-                      label: "就職公司名稱第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "上份工作最後上班日第一層",
-          type: "input",
-          label: "上份工作最後上班日第一層",
-          field: "fNickName",
-          value: "",
-          color: "teal-4",
-          required: false,
-          originValue: "",
-          cr_type: "pureValue",
-          cr_trigger: "0",
-          cr_List: [
-            {
-              name: "上份工作最後上班日第二層",
-              type: "input",
-              label: "上份工作最後上班日第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "上份工作最後上班日第三層",
-                  type: "input",
-                  label: "上份工作最後上班日第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "上份工作最後上班日第四層",
-                      type: "input",
-                      label: "上份工作最後上班日第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
-          ],
+          label: "外國人士",
+          value: "expat"
         }
       ],
-    },
-    {
-      index: 3,
-      name: "重設密碼",
-      type: "toggle",
-      label: "重設密碼",
-      field: "fResetPWD",
-      value: "",
-      falsevalue: "0",
-      truevalue: "1",
-      required: false,
+      required: true,
       originValue: "",
       cr_List: [
         {
-          name: "新密碼第一層",
-          type: "input",
-          label: "新密碼第一層",
-          field: "fNickName",
+          name: "身分證號碼",
+          label: "請輸入身分證號碼",
+          field: "NationalIDNumber",
           value: "",
-          color: "teal-4",
-          required: false,
+          required: true,
           originValue: "",
+          cr_List: [],
+          type: "input",
+          cr_type: "pureValue",
+          cr_trigger: "citizen",
+          cr_operation: "equl"
+        },
+        {
+          name: "護照號碼",
+          label: "請輸入護照號碼",
+          field: "passportID",
+          value: "",
+          required: true,
+          originValue: "",
+          cr_List: [],
+          type: "input",
+          cr_type: "pureValue",
+          cr_trigger: "expat",
+          cr_operation: "equl"
+        }
+      ],
+      type: "radio",
+      index: 3
+    },
+    {
+      name: "是否擁有相關經驗",
+      label: "是否擁有相關經驗",
+      field: "fRelativeExp",
+      value: "",
+      truevalue: "1",
+      falsevalue: "0",
+      required: true,
+      originValue: "",
+      cr_List: [
+        {
+          name: "相關經驗",
+          label: "相關經驗(年)",
+          field: "haveExpYear",
+          value: "",
+          required: true,
+          originValue: "",
+          cr_List: [],
+          type: "input",
           cr_type: "pureValue",
           cr_trigger: "1",
-          cr_List: [
-            {
-              name: "新密碼第二層",
-              type: "input",
-              label: "新密碼第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "新密碼第三層",
-                  type: "input",
-                  label: "新密碼第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "新密碼第四層",
-                      type: "input",
-                      label: "新密碼第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
-          ],
-        },
+          cr_operation: "equl"
+        }
       ],
+      type: "toggle",
+      index: 4
     },
     {
-      index: 4,
-      name: "備註",
-      type: "textarea",
-      label: "備註",
-      field: "fNote",
-      value: "",
-      placeholder: "備註",
-      limitWordsAmount: "500",
-      required: false,
-      originValue: "",
-      cr_List: []
-    },
-    {
-      index: 5,
-      name: "系統權限設定",
-      type: "checkbox",
-      field: "fSystemAuth",
-      label: "系統權限設定",
+      name: "擁有駕照",
+      label: "擁有駕照",
+      field: "driveLicence",
       value: [],
       options: [
         {
-          label: "人資部門",
-          value: "HR",
+          label: "普通重型機車駕駛執照",
+          value: "motor150"
         },
         {
-          label: "資訊部門",
-          value: "IT",
+          label: "小型車駕駛執照",
+          value: "normalCar"
         },
         {
-          label: "行銷部門",
-          value: "MK",
+          label: "大貨車駕駛執照",
+          value: "truck"
         },
+        {
+          label: "聯結車車駕駛執照",
+          value: " tractorTrailer"
+        }
       ],
       required: false,
       originValue: [],
       cr_List: [
         {
-          name: "IT第一層",
-          type: "input",
-          label: "IT第一層",
-          field: "fNickName",
+          name: "擁有機車",
+          label: "擁有機車",
+          field: "pMotor",
           value: "",
-          color: "teal-4",
+          truevalue: "1",
+          falsevalue: "0",
           required: false,
           originValue: "",
+          cr_List: [],
+          type: "toggle",
           cr_type: "multipleValuesInArray",
-          cr_trigger: ["IT"],
-          cr_List: [
-            {
-              name: "IT第二層",
-              type: "checkbox",
-              field: "fnickname2",
-              label: "IT第二層",
-              value: [],
-              options: [
-                {
-                  label: "人資部門",
-                  value: "HR",
-                },
-                {
-                  label: "資訊部門",
-                  value: "IT",
-                },
-                {
-                  label: "行銷部門",
-                  value: "MK",
-                },
-              ],
-              required: false,
-              originValue: [],
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "IT第三層",
-                  type: "input",
-                  label: "IT第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "multipleValuesInArray",
-                  cr_trigger: ["HR"],
-                  cr_List: [
-                    {
-                      name: "IT第四層",
-                      type: "input",
-                      label: "IT第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
+          cr_trigger: [
+            "motor150"
           ],
+          cr_operation: ""
         },
         {
-          name: "IT+MK第一層",
-          type: "input",
-          label: "IT+MK第一層",
-          field: "fNickName",
+          name: "擁有自小客車",
+          label: "擁有自小客車",
+          field: "pC",
           value: "",
-          color: "teal-4",
+          truevalue: "1",
+          falsevalue: "0",
           required: false,
-          originValue: [],
+          originValue: "",
+          cr_List: [],
+          type: "toggle",
           cr_type: "multipleValuesInArray",
-          cr_trigger: ["IT", "MK"],
-          cr_List: [
-            {
-              name: "IT+MK第二層",
-              type: "input",
-              label: "IT+MK第二層",
-              field: "fNickName",
-              value: "",
-              color: "teal-4",
-              required: false,
-              originValue: "",
-              cr_type: "pureValue",
-              cr_trigger: "123",
-              cr_List: [
-                {
-                  name: "IT+MK第三層",
-                  type: "input",
-                  label: "IT+MK第三層",
-                  field: "fNickName",
-                  value: "",
-                  color: "teal-4",
-                  required: false,
-                  originValue: "",
-                  cr_type: "pureValue",
-                  cr_trigger: "123",
-                  cr_List: [
-                    {
-                      name: "IT+MK第四層",
-                      type: "input",
-                      label: "IT+MK第四層",
-                      field: "fNickName",
-                      value: "",
-                      color: "teal-4",
-                      required: false,
-                      originValue: "",
-                      cr_List: [],
-                      cr_type: "pureValue",
-                      cr_trigger: "123"
-                    },
-                  ]
-                },
-              ],
-            },
+          cr_trigger: [
+            "normalCar"
           ],
+          cr_operation: ""
+        },
+        {
+          name: "擁有大貨車",
+          label: "擁有大貨車",
+          field: "pTruck",
+          value: "",
+          truevalue: "1",
+          falsevalue: "0",
+          required: false,
+          originValue: "",
+          cr_List: [],
+          type: "toggle",
+          cr_type: "multipleValuesInArray",
+          cr_trigger: [
+            "truck"
+          ],
+          cr_operation: ""
+        },
+        {
+          name: "擁有聯結車",
+          label: "擁有聯結車",
+          field: "ptractor",
+          value: "",
+          truevalue: "1",
+          falsevalue: "0",
+          required: false,
+          originValue: "",
+          cr_List: [],
+          type: "toggle",
+          cr_type: "multipleValuesInArray",
+          cr_trigger: [
+            " tractorTrailer"
+          ],
+          cr_operation: ""
         }
-      ]
+      ],
+      type: "checkbox",
+      index: 5
     },
     {
-      index: 6,
-      name: "市",
-      type: "select",
-      field: "fCity",
-      label: "居住城市",
+      name: "英語能力",
+      label: "英語能力",
+      field: "fEnglishLevel",
       value: "",
       options: [
         {
-          label: "台北市",
-          value: "台北市",
+          label: "精通",
+          value: "native"
         },
         {
-          label: "新北市",
-          value: "新北市",
+          label: "中高級",
+          value: "mid-high"
         },
         {
-          label: "基隆市",
-          value: "基隆市",
+          label: "中級",
+          value: "mid"
         },
+        {
+          label: "初級",
+          value: "entry-level"
+        },
+        {
+          label: "無",
+          value: "none"
+        }
       ],
       required: false,
       originValue: "",
-      cr_List: [
-        {
-          name: "區",
-          type: "select",
-          field: "fSection",
-          label: "行政區",
-          value: "",
-          options: [
-            {
-              label: "大安區",
-              value: "大安區",
-            },
-            {
-              label: "信義區",
-              value: "信義區",
-            },
-            {
-              label: "內湖區",
-              value: "內湖區",
-            },
-          ],
-          required: false,
-          originValue: "",
-          cr_type: "pureValue",
-          cr_trigger: "台北市",
-          cr_List: [],
-        },
-      ],
+      cr_List: [],
+      type: "select",
+      index: 6
     },
     {
-      index: 7,
-      name: "上傳大頭貼",
-      type: "uploadImg",
-      field: "fImage",
-      label: "上傳大頭貼",
+      name: "上傳大頭照",
+      label: "上傳大頭照",
+      field: "pic",
       value: null,
       previewImgURL: "",
-      required: false,
+      required: true,
       originValue: null,
-      cr_List: []
+      cr_List: [],
+      type: "uploadImg",
+      index: 7
     },
-    // {
-    //   index: 8,
-    //   name: "多重輸入框",
-    //   type: "mutiInputsColumn",
-    // },
-    // {
-    //   index: 9,
-    //   type: "mutiSelectsColumn",
-    //   name: "語言程度",
-    //   label: "語言程度",
-    //   object: [
-    //     {
-    //       label: "英語",
-    //       field: "fEnglishLevel",
-    //       value: "",
-    //       options: [
-    //         { label: "精通", value: "精通" },
-    //         { label: "普通", value: "普通" },
-    //         { label: "略懂", value: "略懂" },
-    //       ],
-    //     },
-    //     {
-    //       label: "西語",
-    //       field: "fEspañolLevel",
-    //       value: "",
-    //       options: [
-    //         { label: "精通", value: "精通" },
-    //         { label: "普通", value: "普通" },
-    //         { label: "略懂", value: "略懂" },
-    //       ],
-    //     },
-    //     {
-    //       label: "德語",
-    //       field: "fGermanLevel",
-    //       value: "",
-    //       options: [
-    //         { label: "精通", value: "精通" },
-    //         { label: "普通", value: "普通" },
-    //         { label: "略懂", value: "略懂" },
-    //       ],
-    //     },
-    //   ],
-    //   required: false,
-    // },
-    // {
-    //   index: 10,
-    //   name: "日期起訖",
-    //   type: "dateRange",
-    //   label: "日期起訖",
-    //   object: [
-    //     {
-    //       label: "輸入起始日期",
-    //       field: "f起始日期",
-    //       value: ""
-    //     },
-    //     {
-    //       label: "輸入結束日期",
-    //       field: "f結束日期",
-    //       value: ""
-    //     }
-    //   ],
-    //   required: false
-    // },
-    // {
-    //   name: "創建時間",
-    //   type: "checkbox",
-    //   field: "fCreateDate",
-    //   label: "",
-    //   options: [
-    //     {
-    //       label: "三個月內",
-    //       type: "inner_checkbox",
-    //       value: false,
-    //       inputlabel: "",
-    //       inputfield: "",
-    //       inputvalue: "",
-    //     },
-    //     {
-    //       label: "一個月內",
-    //       type: "inner_checkbox",
-    //       value: false,
-    //       inputlabel: "",
-    //       inputfield: "",
-    //       inputvalue: "",
-    //     },
-    //     {
-    //       label: "一週內",
-    //       type: "inner_checkbox",
-    //       value: false,
-    //       inputlabel: "",
-    //       inputfield: "",
-    //       inputvalue: "",
-    //     },
-    //     {
-    //       label: "＿天內",
-    //       type: "inner_checkbox",
-    //       value: false,
-    //       inputlabel: "",
-    //       inputfield: "",
-    //       inputvalue: "",
-    //     },
-    //     {
-    //       label: "自選時間區間",
-    //       type: "inner_checkbox",
-    //       value: false,
-    //       inputlabel: "",
-    //       inputfield: "",
-    //       inputvalue: "",
-    //     },
-    //   ],
-    //   required: false,
-    // },
     {
-      index: 11,
-      type: "separator",
+      name: "備註",
+      label: "備註",
+      field: "fNote",
+      value: "",
+      required: false,
+      originValue: "",
+      cr_List: [],
+      type: "textarea",
+      limitWordsAmount: "500",
+      placeholdet: "",
+      placeholder: "請輸入備註",
+      index: 8
     },
+    {
+      type: "separator",
+      index: 9
+    }
   ],
   submit_APISettings: {
     method: "POST",
     urlsArr: [
-      { url: "firstUrl_test" },
+      {
+        url: "firstUrl_test"
+      }
     ],
     askUser: false,
-    PayloadTypes: "params",
+    PayloadTypes: "form"
   }
 })
 
