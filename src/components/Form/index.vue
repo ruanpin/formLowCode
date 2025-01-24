@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, defineAsyncComponent, watch, inject } from 'vue'
+import { ref, defineAsyncComponent, watch, inject, nextTick } from 'vue'
 import { useJSONSharingStore } from 'stores/JSONSharing.js'
 import { useHttpRequestStore } from 'stores/HttpRequest.js'
 import { mainService } from 'src/utils/ObjectProcessService.js'
@@ -427,7 +427,10 @@ const formSettings = ref({
 })
 
 watch(() => storeJSONSharing.JSON_form, (newValue) => {
-  formSettings.value = newValue
+  formSettings.value = []
+  nextTick(() => {
+    formSettings.value = newValue
+  })
 })
 
 function resetValue (elementObject) {
