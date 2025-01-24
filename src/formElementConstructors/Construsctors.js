@@ -1,3 +1,12 @@
+export class Space_Y {
+  constructor() {
+    this.type = "space_Y";
+    this.class = {
+      paddingY: ""
+    }
+  }
+}
+
 export class Separator {
   constructor() {
     this.type = "separator";

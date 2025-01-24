@@ -51,6 +51,7 @@
 <script setup>
 import { ref } from 'vue'
 import {
+  Space_Y,
   Separator,
   Input,
   Input_password,
@@ -78,6 +79,7 @@ const dialog = ref({
   }
 })
 const constructorList = ref([
+  { label: 'space_Y - Y軸空白', value: 'space_Y' },
   { label: 'separator', value: 'separator' },
   { label: 'input', value: 'input' },
   { label: 'input(密碼型)', value: 'input_password' },
@@ -101,6 +103,7 @@ const formSettings = ref({
   }
 })
 const classMapping = {
+  space_Y: Space_Y,
   separator: Separator,
   input: Input,
   input_password: Input_password,

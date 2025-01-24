@@ -64,8 +64,10 @@
 </template>
 
 <script setup>
+import { Separator } from 'src/formElementConstructors/Construsctors'
 import { defineAsyncComponent, ref } from 'vue'
 const ComponentsMapping = {
+  space_Y: defineAsyncComponent(()=> import('./components/Space_YOptions/index.vue')),
   input: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
@@ -82,6 +84,8 @@ const ExtendsComponentsMapping = {
 }
 const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('../_ConditionalRenderSetting/index.vue'))
 const isButtonShow_ConditionalRenderMapping = {
+  space_Y: false,
+  separator: false,
   input: true,
   input_password: false,
   input_date: true,

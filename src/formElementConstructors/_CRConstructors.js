@@ -1,4 +1,5 @@
 import {
+  Space_Y,
   Separator,
   Input,
   Input_password,
@@ -11,6 +12,14 @@ import {
   UploadImg,
 } from './Construsctors.js'
 
+export class Space_Y_CR extends Space_Y {
+  constructor({ cr_trigger }) {
+    super();
+    this.cr_type = ""
+    this.cr_trigger = cr_trigger
+    this.cr_operation = ""
+  }
+}
 export class Separator_CR extends Separator {
   constructor({ cr_trigger }) {
     super();

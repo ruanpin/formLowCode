@@ -73,6 +73,7 @@
 <script setup>
 import { defineAsyncComponent, ref } from 'vue'
 const ComponentsMapping = {
+  space_Y: defineAsyncComponent(()=> import('../../../TypeOptions/components/Space_YOptions/index.vue')),
   input: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
   input_date: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
@@ -90,6 +91,8 @@ const ExtendsComponentsMapping = {
 const CRSettingsComponent = defineAsyncComponent(()=> import('./components/_CRSettings/index.vue'))
 const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('../../index.vue'))
 const isButtonShow_ConditionalRenderMapping = {
+  space_Y: false,
+  separator: false,
   input: true,
   input_password: false,
   input_date: true,

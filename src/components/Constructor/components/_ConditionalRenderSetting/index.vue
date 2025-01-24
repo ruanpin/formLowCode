@@ -72,6 +72,7 @@
 <script setup>
 import { ref } from 'vue'
 import {
+  Space_Y_CR,
   Separator_CR,
   Input_CR,
   Input_password_CR,
@@ -99,6 +100,7 @@ const props = defineProps({
   }
 })
 const constructorList = ref([
+  { label: 'space_Y - Y軸空白', value: 'space_Y' },
   { label: 'separator', value: 'separator' },
   { label: 'input', value: 'input' },
   { label: 'input(密碼型)', value: 'input_password' },
@@ -111,6 +113,7 @@ const constructorList = ref([
   { label: 'uploadImg-上傳照片', value: 'uploadImg' },
 ])
 const classMapping = {
+  space_Y: Space_Y_CR,
   separator: Separator_CR,
   input: Input_CR,
   input_password: Input_password_CR,

@@ -17,7 +17,7 @@
         </div>
       </div>
     </template>
-    <div class="q-mt-sm flex-ac">
+    <div class="q-mt-lg flex-ac q-mb-sm">
       <q-btn
         flat
         unelevated
@@ -46,6 +46,7 @@ defineOptions({
   name: 'FormComponent'
 })
 const componentsRenderingMap = {
+  space_Y: defineAsyncComponent(()=> import('./components/Space_Y/index.vue')),
   separator: defineAsyncComponent(()=> import('./components/Separator/index.vue')),
   input: defineAsyncComponent(()=> import('./components/Input/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputPassword/index.vue')),
@@ -351,8 +352,15 @@ const formSettings = ref({
       index: 8
     },
     {
-      type: "separator",
+      type: "space_Y",
+      class: {
+        paddingY: "sm"
+      },
       index: 9
+    },
+    {
+      type: "separator",
+      index: 10
     }
   ],
   submit_APISettings: {

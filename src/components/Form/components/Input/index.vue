@@ -41,9 +41,40 @@ function updateHandler (newValue) {
     newValue
   })
 }
-
+// const rootClass = computed(() => {
+//   const BASIC_CLASS = 'atomic-button';
+//   return [
+//     `${BASIC_CLASS}--${props.variant}`,
+//     `${BASIC_CLASS}--${props.color}`,
+//     `${BASIC_CLASS}--${props.shape}`,
+//     `${BASIC_CLASS}--${props.size}`,
+//   ];
+// });
 </script>
 
 <style lang="scss" scoped>
+// $name: '.atomic-button';
+// $color-map: (
+//   primary: #1976D2,
+//   success: #72BF24,
+// );
 
+// #{$name} {
+//   &--contained {
+//     color: white;
+//     @each $color, $value in $color-map {
+//       &#{$name}--#{$color} {
+//         background-color: rgba($value, 1);
+
+//         &:not(:disabled):is(:hover, :focus) {
+//           background-color: rgba($value, 0.8);
+//         }
+
+//         &:not(:disabled):active {
+//           background-color: rgba($value, 0.6);
+//         }
+//       }
+//     }
+//   }
+// }
 </style>
