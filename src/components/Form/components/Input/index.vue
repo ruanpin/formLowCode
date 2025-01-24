@@ -1,6 +1,6 @@
 <template>
-  <div class="q-py-sm">
-    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100"> *</span></div>
+  <div class="q-py-sm" :class="rootClass">
+    <div class="f700 q-mb-xs fz14 wordBreakAll" :class="titleClass">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100"> *</span></div>
     <q-input
       color="primary"
       class="col"
@@ -22,6 +22,11 @@
 
 <script setup>
 import { updateCrObjectToRenderList } from 'src/utils/ConditionalRender.js'
+
+import {
+  useElementLayout,
+} from '../../composables/elementCSS.js'
+
 defineOptions({
   name: 'InputComponent'
 })
@@ -41,6 +46,12 @@ function updateHandler (newValue) {
     newValue
   })
 }
+
+const {
+  rootClass,
+  titleClass,
+} = useElementLayout({ renderObject: props.renderObject })
+
 // const rootClass = computed(() => {
 //   const BASIC_CLASS = 'atomic-button';
 //   return [

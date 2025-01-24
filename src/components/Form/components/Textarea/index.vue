@@ -1,6 +1,6 @@
 <template>
-  <div class="q-py-sm">
-    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
+  <div class="q-py-sm" :class="rootClass">
+    <div class="f700 q-mb-xs fz14 wordBreakAll" :class="titleClass">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <div class="col">
       <q-input
         v-model="renderObject.value"
@@ -19,6 +19,10 @@
 </template>
 
 <script setup>
+import {
+  useElementLayout,
+} from '../../composables/elementCSS.js'
+
 defineOptions({
   name: 'TextareaComponent'
 })
@@ -28,6 +32,10 @@ const props = defineProps({
     required: true
   }
 })
+const {
+  rootClass,
+  titleClass,
+} = useElementLayout({ renderObject: props.renderObject })
 </script>
 
 <style lang="scss" scoped>
