@@ -1,0 +1,1 @@
+import{B as e}from"./IndexPage.97a76b35.js";function n(r,o){try{if(!Array.isArray(o))throw new Error("The target you want to be updated is not Array.");r?o.push(new e):!r&&o.length>1&&o.pop()}catch{console.log("error, see above")}}export{n as u};
