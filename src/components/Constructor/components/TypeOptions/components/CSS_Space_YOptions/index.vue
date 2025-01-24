@@ -32,7 +32,7 @@
 
 <script setup>
 defineOptions({
-  name: 'InputOptionsComponent'
+  name: 'Space_YOptionsComponent'
 });
 const props = defineProps({
   formObj: Object
