@@ -1,6 +1,6 @@
 <template>
-  <div class="q-py-sm">
-    <div class="f700 q-mb-xs fz14">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
+  <div class="q-py-sm" :class="rootClass">
+    <div class="f700 q-mb-xs fz14 wordBreakAll" :class="titleClass">{{ renderObject.label }}<span v-show="renderObject.required" style="color: #CC0100">*</span></div>
     <div class="flex-ac wrap">
       <q-checkbox
         v-for="(item, index) in renderObject.options" :key="index"
@@ -19,6 +19,11 @@
 
 <script setup>
 import { updateCrObjectToRenderList } from 'src/utils/ConditionalRender.js'
+
+import {
+  useElementLayout,
+} from '../../composables/elementCSS.js'
+
 defineOptions({
   name: 'CheckboxComponent'
 })
@@ -38,6 +43,11 @@ function updateHandler (newValue) {
     newValue
   })
 }
+
+const {
+  rootClass,
+  titleClass,
+} = useElementLayout({ renderObject: props.renderObject })
 </script>
 
 <style lang="scss" scoped>

@@ -30,19 +30,19 @@
   </q-select>
   <div>
     <q-chip
-      v-show="formObj.type"
+      v-show="formObj.type && formObj.hasOwnProperty('field')"
       outline
       square
       size="md"
       color="primary"
       text-color="white"
-      icon="format_list_bulleted  "
+      icon="format_list_bulleted"
       class="q-ma-none q-mt-md q-mb-xs"
     >
       基本設定
     </q-chip>
     <component
-      :is="ComponentsMapping[formObj.type]"
+      :is="BasicComponentsMapping[formObj.type]"
       :formObj="formObj"
     >
       <!-- slot:擴充選項 -->
@@ -51,6 +51,28 @@
         :formObj="formObj"
       />
     </component>
+    <q-chip
+      v-show="formObj.hasOwnProperty('class')"
+      outline
+      square
+      size="md"
+      color="primary"
+      text-color="white"
+      icon="format_list_bulleted"
+      class="q-ma-none q-mt-md q-mb-xs"
+    >
+      樣式設定
+    </q-chip>
+    <!-- 個別樣式設定 -->
+    <component
+      :is="IndividualStyleComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    />
+    <!-- 共通樣式設定 -->
+    <component
+      :is="CommonStyleComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    />
     <div class="row q-mt-lg" v-show="formObj.type && isButtonShow_ConditionalRenderMapping[formObj.type]">
       <q-btn unelevated color="orange-8" class="col" @click="dialog.ConditionalRenderSetting.isShow = true">
         <q-icon class="q-mr-xs" name="settings"></q-icon>條件渲染設定
@@ -65,7 +87,7 @@
 
 <script setup>
 import { defineAsyncComponent, ref } from 'vue'
-const ComponentsMapping = {
+const BasicComponentsMapping = {
   input: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputOptions/index.vue')),
@@ -76,12 +98,28 @@ const ComponentsMapping = {
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
   uploadImg: defineAsyncComponent(()=> import('./components/UploadImgOptions/index.vue')),
 }
+const IndividualStyleComponentsMapping = {
+  space_Y: defineAsyncComponent(()=> import('./components/CSS_Space_YOptions/index.vue')),
+}
+const CommonStyleComponentsMapping = {
+  input: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  input_password: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  input_date: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  radio: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  toggle: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  textarea: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  checkbox: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  select: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  uploadImg: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+}
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
   input_date: defineAsyncComponent(()=> import('./components/InputExtends/Date/index.vue')),
 }
 const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('../_ConditionalRenderSetting/index.vue'))
 const isButtonShow_ConditionalRenderMapping = {
+  space_Y: false,
+  separator: false,
   input: true,
   input_password: false,
   input_date: true,

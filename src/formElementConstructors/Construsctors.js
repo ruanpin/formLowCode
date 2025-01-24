@@ -1,3 +1,12 @@
+export class Space_Y {
+  constructor() {
+    this.type = "space_Y";
+    this.class = {
+      paddingY: ""
+    }
+  }
+}
+
 export class Separator {
   constructor() {
     this.type = "separator";
@@ -19,6 +28,9 @@ class BasicInput {
     this.value = "";
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -61,6 +73,9 @@ class BasicRadio {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -82,6 +97,9 @@ class BasicToggle {
     this.falsevalue = "";
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -102,6 +120,9 @@ class BasicCheckbox {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = []
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -122,6 +143,9 @@ class BasicSelect {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -142,6 +166,9 @@ class BasicUploadImg {
     this.previewImgURL = "";
     this.required = false;
     this.originValue = null
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }

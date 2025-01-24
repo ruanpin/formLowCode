@@ -17,7 +17,7 @@
         </div>
       </div>
     </template>
-    <div class="q-mt-sm flex-ac">
+    <div class="q-mt-lg flex-ac q-mb-sm">
       <q-btn
         flat
         unelevated
@@ -46,6 +46,7 @@ defineOptions({
   name: 'FormComponent'
 })
 const componentsRenderingMap = {
+  space_Y: defineAsyncComponent(()=> import('./components/Space_Y/index.vue')),
   separator: defineAsyncComponent(()=> import('./components/Separator/index.vue')),
   input: defineAsyncComponent(()=> import('./components/Input/index.vue')),
   input_password: defineAsyncComponent(()=> import('./components/InputPassword/index.vue')),
@@ -77,6 +78,9 @@ const formSettings = ref({
       value: "",
       required: true,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [],
       type: "input",
       index: 0
@@ -88,6 +92,9 @@ const formSettings = ref({
       value: "",
       required: true,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [],
       type: "input_password",
       limitWordsAmount: "",
@@ -100,6 +107,9 @@ const formSettings = ref({
       value: "",
       required: true,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [
         {
           name: "未滿20歲需提供法定代理人姓名",
@@ -108,6 +118,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "age",
@@ -135,6 +148,9 @@ const formSettings = ref({
       ],
       required: true,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [
         {
           name: "身分證號碼",
@@ -143,6 +159,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -156,6 +175,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -175,6 +197,9 @@ const formSettings = ref({
       falsevalue: "0",
       required: true,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [
         {
           name: "相關經驗",
@@ -183,6 +208,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -218,6 +246,9 @@ const formSettings = ref({
       ],
       required: false,
       originValue: [],
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [
         {
           name: "擁有機車",
@@ -228,6 +259,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -245,6 +279,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -262,6 +299,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -279,6 +319,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -320,6 +363,9 @@ const formSettings = ref({
       ],
       required: false,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [],
       type: "select",
       index: 6
@@ -332,6 +378,9 @@ const formSettings = ref({
       previewImgURL: "",
       required: true,
       originValue: null,
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [],
       type: "uploadImg",
       index: 7
@@ -343,6 +392,9 @@ const formSettings = ref({
       value: "",
       required: false,
       originValue: "",
+      class: {
+        layoutFlex: "column"
+      },
       cr_List: [],
       type: "textarea",
       limitWordsAmount: "500",
@@ -351,8 +403,15 @@ const formSettings = ref({
       index: 8
     },
     {
-      type: "separator",
+      type: "space_Y",
+      class: {
+        paddingY: "sm"
+      },
       index: 9
+    },
+    {
+      type: "separator",
+      index: 10
     }
   ],
   submit_APISettings: {
@@ -457,5 +516,22 @@ function submitForm (APISettings) {
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
     border: 2px solid rgba(255, 255, 255, .5);
     backdrop-filter: blur(20px);
+  }
+</style>
+<style lang="scss">
+  .layoutFlex {
+    &-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .form-title {
+        width: 12%;
+        margin-bottom: 0px;
+      }
+    }
+    &-column {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>

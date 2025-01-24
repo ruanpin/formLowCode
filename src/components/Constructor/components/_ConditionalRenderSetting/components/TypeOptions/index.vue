@@ -30,19 +30,19 @@
   </q-select>
   <div>
     <q-chip
-      v-show="formObj.type"
+      v-show="formObj.type && formObj.hasOwnProperty('field')"
       outline
       square
       size="md"
       color="primary"
       text-color="white"
-      icon="format_list_bulleted  "
+      icon="format_list_bulleted"
       class="q-ma-none q-mt-md q-mb-xs"
     >
       基本設定
     </q-chip>
     <component
-      :is="ComponentsMapping[formObj.type]"
+      :is="BasicComponentsMapping[formObj.type]"
       :formObj="formObj"
     >
       <!-- slot:擴充選項 -->
@@ -51,6 +51,28 @@
         :formObj="formObj"
       />
     </component>
+    <q-chip
+      v-show="formObj.hasOwnProperty('class')"
+      outline
+      square
+      size="md"
+      color="primary"
+      text-color="white"
+      icon="format_list_bulleted"
+      class="q-ma-none q-mt-md q-mb-xs"
+    >
+      樣式設定
+    </q-chip>
+    <!-- 個別樣式設定 -->
+    <component
+      :is="IndividualStyleComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    />
+    <!-- 共通樣式設定 -->
+    <component
+      :is="CommonStyleComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    />
 
     <!-- 條件渲染 條件設定 -->
     <CRSettingsComponent
@@ -72,7 +94,7 @@
 
 <script setup>
 import { defineAsyncComponent, ref } from 'vue'
-const ComponentsMapping = {
+const BasicComponentsMapping = {
   input: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
   input_password: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
   input_date: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputOptions/index.vue')),
@@ -83,6 +105,20 @@ const ComponentsMapping = {
   select: defineAsyncComponent(()=> import('../../../TypeOptions/components/SelectOptions/index.vue')),
   uploadImg: defineAsyncComponent(()=> import('../../../TypeOptions/components/UploadImgOptions/index.vue')),
 }
+const IndividualStyleComponentsMapping = {
+  space_Y: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_Space_YOptions/index.vue')),
+}
+const CommonStyleComponentsMapping = {
+  input: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  input_password: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  input_date: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  radio: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  toggle: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  textarea: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  checkbox: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  select: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+  uploadImg: defineAsyncComponent(()=> import('../../../TypeOptions/components/CSS_CommonOptions/index.vue')),
+}
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputExtends/Password/index.vue')),
   input_date: defineAsyncComponent(()=> import('../../../TypeOptions/components/InputExtends/Date/index.vue')),
@@ -90,6 +126,8 @@ const ExtendsComponentsMapping = {
 const CRSettingsComponent = defineAsyncComponent(()=> import('./components/_CRSettings/index.vue'))
 const Popup_ConditionalRenderSetting = defineAsyncComponent(()=> import('../../index.vue'))
 const isButtonShow_ConditionalRenderMapping = {
+  space_Y: false,
+  separator: false,
   input: true,
   input_password: false,
   input_date: true,
