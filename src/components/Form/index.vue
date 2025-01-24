@@ -79,7 +79,7 @@ const formSettings = ref({
       required: true,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [],
       type: "input",
@@ -93,7 +93,7 @@ const formSettings = ref({
       required: true,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [],
       type: "input_password",
@@ -108,7 +108,7 @@ const formSettings = ref({
       required: true,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [
         {
@@ -118,6 +118,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "age",
@@ -146,7 +149,7 @@ const formSettings = ref({
       required: true,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [
         {
@@ -156,6 +159,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -169,6 +175,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -189,7 +198,7 @@ const formSettings = ref({
       required: true,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [
         {
@@ -199,6 +208,9 @@ const formSettings = ref({
           value: "",
           required: true,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "input",
           cr_type: "pureValue",
@@ -235,7 +247,7 @@ const formSettings = ref({
       required: false,
       originValue: [],
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [
         {
@@ -247,6 +259,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -264,6 +279,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -281,6 +299,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -298,6 +319,9 @@ const formSettings = ref({
           falsevalue: "0",
           required: false,
           originValue: "",
+          class: {
+            layoutFlex: "column"
+          },
           cr_List: [],
           type: "toggle",
           cr_type: "multipleValuesInArray",
@@ -340,7 +364,7 @@ const formSettings = ref({
       required: false,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [],
       type: "select",
@@ -355,7 +379,7 @@ const formSettings = ref({
       required: true,
       originValue: null,
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [],
       type: "uploadImg",
@@ -369,7 +393,7 @@ const formSettings = ref({
       required: false,
       originValue: "",
       class: {
-        layoutFlex: "row"
+        layoutFlex: "column"
       },
       cr_List: [],
       type: "textarea",

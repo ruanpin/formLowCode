@@ -28,6 +28,9 @@ class BasicInput {
     this.value = "";
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -70,6 +73,9 @@ class BasicRadio {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -91,6 +97,9 @@ class BasicToggle {
     this.falsevalue = "";
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -111,6 +120,9 @@ class BasicCheckbox {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = []
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -131,6 +143,9 @@ class BasicSelect {
     this.options = [{ label: "", value: "" }];
     this.required = false;
     this.originValue = ""
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }
@@ -151,6 +166,9 @@ class BasicUploadImg {
     this.previewImgURL = "";
     this.required = false;
     this.originValue = null
+    this.class = {
+      layoutFlex: "column"
+    }
     this.cr_List = []
   }
 }

@@ -63,8 +63,14 @@
     >
       樣式設定
     </q-chip>
+    <!-- 個別樣式設定 -->
     <component
-      :is="StyleComponentsMapping[formObj.type]"
+      :is="IndividualStyleComponentsMapping[formObj.type]"
+      :formObj="formObj"
+    />
+    <!-- 共通樣式設定 -->
+    <component
+      :is="CommonStyleComponentsMapping[formObj.type]"
       :formObj="formObj"
     />
     <div class="row q-mt-lg" v-show="formObj.type && isButtonShow_ConditionalRenderMapping[formObj.type]">
@@ -92,8 +98,19 @@ const BasicComponentsMapping = {
   select: defineAsyncComponent(()=> import('./components/SelectOptions/index.vue')),
   uploadImg: defineAsyncComponent(()=> import('./components/UploadImgOptions/index.vue')),
 }
-const StyleComponentsMapping = {
+const IndividualStyleComponentsMapping = {
   space_Y: defineAsyncComponent(()=> import('./components/CSS_Space_YOptions/index.vue')),
+}
+const CommonStyleComponentsMapping = {
+  input: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  input_password: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  input_date: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  radio: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  toggle: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  textarea: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  checkbox: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  select: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
+  uploadImg: defineAsyncComponent(()=> import('./components/CSS_CommonOptions/index.vue')),
 }
 const ExtendsComponentsMapping = {
   input_password: defineAsyncComponent(()=> import('./components/InputExtends/Password/index.vue')),
