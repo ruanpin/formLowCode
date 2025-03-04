@@ -1,0 +1,1 @@
+import{c as o}from"./index.4a5f5042.js";function e({renderObject:s}){const l=o(()=>{var t;return[`layoutFlex-${(t=s.class)==null?void 0:t.layoutFlex}`]}),a=o(()=>{var t;return[{row:"form-title",column:""}[(t=s.class)==null?void 0:t.layoutFlex]]});return{rootClass:l,titleClass:a}}export{e as u};

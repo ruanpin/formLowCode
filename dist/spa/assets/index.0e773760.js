@@ -1,1 +1,0 @@
-import{a5 as e,aq as t}from"./index.cb804006.js";const u=Object.assign({name:"MutiInputsColumnComponent"},{__name:"index",props:{renderObject:{type:Object,required:!0}},setup(n){return(o,r)=>(e(),t("div",null," MutiInputsColumnComponent "))}});export{u as default};
